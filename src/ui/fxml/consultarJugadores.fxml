@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="306.0" fitWidth="559.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/opt2.jpeg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="50.0" prefHeight="33.0" prefWidth="310.0" text="Consultar Jugadores" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font name="Roboto Italic" size="26.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.23076923076923075" endY="0.014423076923076924" startX="1.0" startY="0.9615384615384616">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5921052694320679" green="0.2627924084663391" blue="0.010964912362396717" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7763158082962036" green="0.5590552091598511" blue="0.3558114171028137" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>
