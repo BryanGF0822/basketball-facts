@@ -1,24 +1,56 @@
 package ui;
 
 import java.io.FileReader;
+
+import java.io.IOException;
 import java.util.Arrays;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+/*
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-
-public class Main {
-
-	public static void main(String[] args) {
+*/
+public class Main extends Application{
+	
+	private GUIController gc;
+	
+	public Main() {
+		gc = new GUIController();
 		
-		readDataLineByLine("f.csv");
-		System.out.println("Lo lei ");
+	}
+	
+	public static void main(String[] args) {
+		//readDataLineByLine("f.csv");
+		//System.out.println("Lo lei +  ");
+		//GUI
+		launch(args);
+
+		
+		
+	}
+	
+	@Override
+	public void start(Stage primaryStage) throws IOException{
+		FXMLLoader fxmll = new FXMLLoader(getClass().getResource("fxml/logo.fxml")); 
+		fxmll.setController(gc);
+		Parent root = fxmll.load();
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Basketball Facts!");
+		primaryStage.setResizable(false);
+		
+		
 	}
 
 	// Java code to illustrate reading a
 	// CSV file line by line
 	public static void readDataLineByLine(String file)
 	{
-	  
+	  /*
 	    try {
 	  
 	        // Create an object of filereader
@@ -42,5 +74,10 @@ public class Main {
 	    catch (Exception e) {
 	        e.printStackTrace();
 	    }
+	    
+	    */
 	}
+	
+	
+	
 }
