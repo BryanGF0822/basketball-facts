@@ -1,7 +1,7 @@
 package model;
 
 public class Player {
-	
+
 	private String nombre;
 	private int edad;
 	private String equipo;
@@ -11,10 +11,10 @@ public class Player {
 	private double robosPorPartido;
 	private double bloqueosPorPartido;
 	private double faltasPorPartido;
-	
+
 	public Player(String nombre, int edad, String equipo, double puntosPorPartido, double rebotesPorPartido,
 			double asistenciasPorPartido, double robosPorPartido, double bloqueosPorPartido, double faltasPorPartido) {
-		
+
 		this.nombre = nombre;
 		this.edad = edad;
 		this.equipo = equipo;
@@ -97,8 +97,11 @@ public class Player {
 	public void setFaltasPorPartido(double faltasPorPartido) {
 		this.faltasPorPartido = faltasPorPartido;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return nombre + "," + edad + "," + equipo + "," + puntosPorPartido + "," + rebotesPorPartido + ","
+				+ asistenciasPorPartido + "," + robosPorPartido + "," + bloqueosPorPartido + "," + faltasPorPartido;
+	}
+
 }

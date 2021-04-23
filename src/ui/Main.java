@@ -11,20 +11,16 @@ import model.BasketballAgency;
 public class Main extends Application{
 	
 	private GUIController gc;
-	private static BasketballAgency ba;
 	
-	public Main() {
+	public Main() throws IOException {
 		gc = new GUIController();
-		ba = new BasketballAgency();
 		
 	}
 	
 	public static void main(String[] args) throws IOException {
 		
 		//GUI
-		//launch(args);
-		ba.importPlayers("data/players.csv");
-		
+		launch(args);
 	}
 	
 	@Override
