@@ -6,20 +6,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.BasketballAgency;
 
 public class Main extends Application{
 	
 	private GUIController gc;
+	private static BasketballAgency ba;
 	
 	public Main() {
 		gc = new GUIController();
+		ba = new BasketballAgency();
 		
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//GUI
 		launch(args);
+		ba.importDataBooksList("/data/f.csv");
+		
 	}
 	
 	@Override
