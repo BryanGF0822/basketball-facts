@@ -22,8 +22,8 @@ public class Main extends Application{
 	public static void main(String[] args) throws IOException {
 		
 		//GUI
-		launch(args);
-		ba.importDataBooksList("/data/f.csv");
+		//launch(args);
+		ba.importPlayers("data/players.csv");
 		
 	}
 	
