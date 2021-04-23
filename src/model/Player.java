@@ -10,9 +10,10 @@ public class Player {
 	private int asistenciasPorPartido;
 	private int robosPorPartido;
 	private int bloqueosPorPartido;
+	private int faltasPorPartido;
 	
 	public Player(String nombre, int edad, String equipo, int puntosPorPartido, int rebotesPorPartido,
-			int asistenciasPorPartido, int robosPorPartido, int bloqueosPorPartido) {
+			int asistenciasPorPartido, int robosPorPartido, int bloqueosPorPartido, int faltasPorPartido) {
 		
 		this.nombre = nombre;
 		this.edad = edad;
@@ -22,6 +23,7 @@ public class Player {
 		this.asistenciasPorPartido = asistenciasPorPartido;
 		this.robosPorPartido = robosPorPartido;
 		this.bloqueosPorPartido = bloqueosPorPartido;
+		this.faltasPorPartido = faltasPorPartido;
 	}
 
 	public String getNombre() {
@@ -87,6 +89,16 @@ public class Player {
 	public void setBloqueosPorPartido(int bloqueosPorPartido) {
 		this.bloqueosPorPartido = bloqueosPorPartido;
 	}
+
+	public int getFaltasPorPartido() {
+		return faltasPorPartido;
+	}
+
+	public void setFaltasPorPartido(int faltasPorPartido) {
+		this.faltasPorPartido = faltasPorPartido;
+	}
+	
+	
 	
 	
 }
