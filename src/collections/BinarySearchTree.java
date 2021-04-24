@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
-import com.dalmatians.datastructures.BinarySearchTree.Node;
-
 /**
  * Implementation of a generic Binary Search Tree in which whenever are
  * duplicate keys, values are stored in a list.
@@ -63,7 +61,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		 * @param data, an object of a class K,V that implements Comparable interface
 		 */
 		public Node(K key, V data) {
-			this.values = new LinkedList<>();
+			this.values = new LinkedList<V>();
 			this.values.add(data);
 			this.left = null;
 			this.right = null;
@@ -202,7 +200,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 
 	protected Node<K, V> add(Node<K, V> currentNode, K key, V value) {
 		if (currentNode == null)
-			return new Node<>(key, value);
+			return new Node<K, V>(key, value);
 		int cmp = key.compareTo(currentNode.key);
 		if (cmp < 0) {
 			currentNode.left = add(currentNode.left, key, value);
@@ -304,7 +302,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	}
 
 	public List<V> inorder() {
-		List<V> list = new ArrayList<>();
+		List<V> list = new ArrayList<V>();
 		inorder(root, list);
 		return list;
 	}
@@ -319,7 +317,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	}
 
 	public List<V> preorder() {
-		List<V> list = new ArrayList<>();
+		List<V> list = new ArrayList<V>();
 		preorder(root, list);
 		return list;
 	}
@@ -334,7 +332,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	}
 
 	public List<V> preorderLookUp(String key, int maxSize) {
-		List<V> list = new LinkedList<>();
+		List<V> list = new LinkedList<V>();
 		preorderLookUp(root, list, key.toString(), maxSize);
 		return list;
 	}
@@ -375,7 +373,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	}
 
 	public List<V> postorder() {
-		List<V> list = new ArrayList<>();
+		List<V> list = new ArrayList<V>();
 		postorder(root, list);
 		return list;
 	}
@@ -419,7 +417,6 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		return y;
 	}
 
-	@Override
 	public Iterator<List<V>> iterator() {
 		return new InorderIterator();
 	}

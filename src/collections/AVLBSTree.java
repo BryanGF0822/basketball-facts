@@ -16,7 +16,7 @@ public class AVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V
 	
 	public static void main(String[] args) {
 		
-		AVLBSTree<String, String> avl = new AVLBSTree<>();
+		AVLBSTree<String, String> avl = new AVLBSTree<String, String>();
 		avl.add("Chris", "Chris");
 		avl.add("Maria", "Maria");
 		avl.add("Juan", "Juan");
@@ -84,9 +84,6 @@ public class AVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V
 	protected int balanceFactor(Node<K, V> x) {
 		return height(x.left) - height(x.right);
 	}
-
-	@Override
-	public List<V> autoComplete(String key, int maxSize) {
-		return preorderLookUp(key, maxSize);
-	}
+	
+	
 }

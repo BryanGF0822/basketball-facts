@@ -17,7 +17,7 @@ public class RedBlackBSTree<K extends Comparable<K>, V> implements Serializable 
 	public static void main(String[] args) {
 		
 		System.out.println("TEST");
-		RedBlackBSTree<Integer, Integer> tree = new RedBlackBSTree<>();
+		RedBlackBSTree<Integer, Integer> tree = new RedBlackBSTree<Integer, Integer>();
 
 //		tree.add(10, 10);
 //		tree.print2D();
@@ -98,7 +98,7 @@ public class RedBlackBSTree<K extends Comparable<K>, V> implements Serializable 
 
 		public NodeRB(K key, V data) {
 			this.color = true;
-			this.values = new LinkedList<>();
+			this.values = new LinkedList<V>();
 			this.values.add(data);
 			this.left = null;
 			this.right = null;
@@ -109,7 +109,7 @@ public class RedBlackBSTree<K extends Comparable<K>, V> implements Serializable 
 		
 		public NodeRB() {
 			this.color = false;
-			this.values = new LinkedList<>();
+			this.values = new LinkedList<V>();
 			this.left = null;
 			this.right = null;
 			this.parent = null;
@@ -215,7 +215,7 @@ public class RedBlackBSTree<K extends Comparable<K>, V> implements Serializable 
 
 	protected NodeRB<K, V> addBST(NodeRB<K, V> currentNode, K key, V value) {
 
-		NodeRB<K, V> addedNode = new NodeRB<>(key, value);
+		NodeRB<K, V> addedNode = new NodeRB<K, V>(key, value);
 
 		if (root == null) {
 			root = addBST(currentNode, addedNode);

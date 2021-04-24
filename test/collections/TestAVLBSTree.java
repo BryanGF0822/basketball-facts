@@ -8,6 +8,8 @@ import org.junit.Test;
 
 public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V> {
 	
+	
+	private static final long serialVersionUID = 1L;
 	private AVLBSTree<Integer, Integer> tree;
 	
 	public void emptySetup() {
