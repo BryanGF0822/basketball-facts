@@ -1,4 +1,4 @@
-package com.dalmatians.datastructures;
+package collections;
 
 import java.util.List;
 
