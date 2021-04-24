@@ -14,65 +14,6 @@ public class RedBlackBSTree<K extends Comparable<K>, V> implements Serializable 
 	 */
 	private static final long serialVersionUID = 3780276775535770707L;
 
-	public static void main(String[] args) {
-		
-		System.out.println("TEST");
-		RedBlackBSTree<Integer, Integer> tree = new RedBlackBSTree<Integer, Integer>();
-
-//		tree.add(10, 10);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		
-//		tree.add(20, 20);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		
-//		tree.add(30, 30);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		
-//		tree.add(15, 15);
-//		tree.print2D();
-//		System.out.println("===========================");
-
-//		tree.add(8, 8);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(18, 18);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(5, 5);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(15, 15);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(17, 17);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(25, 25);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(40, 40);
-//		tree.print2D();
-//		System.out.println("===========================");
-//		tree.add(80, 80);
-//		tree.print2D();
-//		System.out.println("===========================");
-		
-		tree.add(17, 17);
-		tree.add(18, 18);
-		tree.add(5, 5);
-		tree.add(8, 8);
-		tree.add(40, 40);
-		tree.add(25, 25);
-		tree.add(15, 15);
-		tree.print2D();
-		
-		tree.delete(80);
-		tree.print2D();
-		System.out.println("===========================");
-	}
 
 	protected class NodeRB<K extends Comparable<? super K>, V> {
 
