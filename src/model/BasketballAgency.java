@@ -16,18 +16,19 @@ public class BasketballAgency {
     private AVLBSTree<Double, Integer> puntosPorPartido;
     private AVLBSTree<Double, Integer> rebotesPorPartido;
     private AVLBSTree<Double, Integer> asistenciasPorPartido;
-    private RedBlackBSTree<Double, Integer> robosPorPartido;
+    private RedBlackTree<Double, Integer> robosPorPartido;
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
 		puntosPorPartido = new AVLBSTree<Double, Integer>();
 		rebotesPorPartido = new AVLBSTree<Double, Integer>();
 		asistenciasPorPartido = new AVLBSTree<Double, Integer>();
-		robosPorPartido = new RedBlackBSTree<Double, Integer>();
+		robosPorPartido = new RedBlackTree<Double, Integer>();
 	}
 	
 	public void addPlayersStatics() {
 		Node<Double, Integer> toAdd;
+		TreeNode<Double, Integer> toAddRB;
 		for (int i = 0; i < playersList.size(); i++) {
 			//Agregar puntos por partido
 			if(puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido())==null) {
@@ -60,12 +61,13 @@ public class BasketballAgency {
 			}
           
           //Agregar robos por partido
-          if(robosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido())==null) {
+          if(robosPorPartido.find(playersList.get(i).getAsistenciasPorPartido())==null) {
 			    
-			    toAdd = puntosPorPartido.add(playersList.get(i).getAsistenciasPorPartido(), i); 
-			    toAdd.getPlayers().add(playersList.get(i));
+			    toAddRB = robosPorPartido.insert(playersList.get(i).getAsistenciasPorPartido(), i); 
+			    toAddRB.getPlayers().add(playersList.get(i));
+			    System.out.println(toAddRB);
 			}else {
-				puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
+				robosPorPartido.find(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
 			}
          
           
