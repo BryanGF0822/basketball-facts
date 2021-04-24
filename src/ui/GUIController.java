@@ -68,6 +68,23 @@ public class GUIController {
 			// TODO: handle exception with an alert that displays the content of the error.
 		} 
 	}
+// Ventana Informacion jugadores
+	public void LoadInfoWindow() {
+		try {
+			FXMLLoader fxmll = new FXMLLoader(getClass().getResource("fxml/informacionJugadores.fxml"));
+			fxmll.setController(this);
+			Parent root = fxmll.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Basketball Facts!");
+			stage.setResizable(false);
+			stage.show();
+
+		} catch (IOException ioException) {
+			// TODO: handle exception with an alert that displays the content of the error.
+		}
+	}
 	
 	
 	private void LoadSearchByNameWindow(String nameToDisplay) {
@@ -248,13 +265,13 @@ public class GUIController {
 	// ********** search name window action **********
     @FXML
     void searchByName(ActionEvent event) {
-
+		LoadInfoWindow();
     }
     
     // ********** search range action **********
     @FXML
     void searchByRange(ActionEvent event) {
-
+		LoadInfoWindow();
     }
 	
 	
