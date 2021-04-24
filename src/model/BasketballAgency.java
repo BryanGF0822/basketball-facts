@@ -80,9 +80,6 @@ public class BasketballAgency {
 
 		}
 		
-		for (int i = 0; i < playersList.size(); i++) {
-			
-			System.out.println(playersList.get(i));
-		}
+		br.close();
 	}
 }

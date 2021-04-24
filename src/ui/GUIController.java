@@ -45,43 +45,7 @@ public class GUIController {
 		ba = new BasketballAgency();
 	}
 	
-	public void initialize() {
-		/*if (ba == null) {
-			ba = new BasketballAgency();
-
-			// import player information before opening the principal window.
-			try {
-				ba.importPlayers(CSV_PATH);
-				
-				LoadMainWindow();
-				
-				//Closes logo loading window.
-				Stage logoStage = (Stage) logoAP.getScene().getWindow();
-			    logoStage.close();
-			    
-			} catch (IOException ioException) {
-				// TODO: handle exception with an alert that displays the content of the error.
-			} 
-			
-		}*/
-	}
-	/*
-	public void importData() {
-		try {
-			ba.importPlayers(CSV_PATH);
-			
-			//Closes logo loading window.
-			Stage logoStage = (Stage) logoAP.getScene().getWindow();
-		    logoStage.close();
-			
-			LoadMainWindow();
-		    
-		} catch (IOException ioException) {
-			// TODO: handle exception with an alert that displays the content of the error.
-		} 
-		
-	}
-	*/
+	
 	
 	// ********** load fxml **********
 	
@@ -105,6 +69,7 @@ public class GUIController {
     void load(ActionEvent event) {
 		try {
 			ba.importPlayers(CSV_PATH);
+			ba.addPlayersStatics();
 			
 			//Closes logo loading window.
 			Stage logoStage = (Stage) logoAP.getScene().getWindow();
