@@ -24,11 +24,7 @@ public interface BinarySearchTreeInterface<K extends Comparable<K>,V> {
 	
 	public int getHeight();	
 	
-	public String preOrder();
 	
-	public String inOrder();
-	
-	public String postOrder();		
 	
 	//------------------------------------------------------------------------------------
 	

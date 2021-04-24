@@ -7,13 +7,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import collections.*;
+
 public class BasketballAgency {
 
 	private List<Player> playersList;
-
+    private AVLTree<Double, Integer> puntosPorPartido;
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
+		puntosPorPartido = new AVLTree<>();
+		
+	}
+	
+	public void addPlayersStatics() {
+		for (int i = 0; i < playersList.size(); i++) {
+			//syso()
+		}
 	}
 
 	public void importPlayers(String fn) throws IOException {

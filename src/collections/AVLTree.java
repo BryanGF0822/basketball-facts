@@ -25,7 +25,7 @@ public class AVLTree<K extends Comparable<K>,V> extends BinarySearchTree<K,V> im
 	public boolean add(K key, V value) {
 
 		//Could be a new node or a node with added value
-		AVLTreeNode<K,V> addedNode = new AVLTreeNode<>(key,value);
+		AVLTreeNode<K,V> addedNode = new AVLTreeNode<K, V>(key,value);
 
 		add(addedNode);		
 				
