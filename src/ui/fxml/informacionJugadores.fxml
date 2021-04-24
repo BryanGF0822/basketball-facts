@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/opt2.jpeg" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="337.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="310.0" text="Información Jugadores" textOverrun="CENTER_ELLIPSIS">
+                     <font>
+                        <Font name="Roboto Italic" size="26.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.23076923076923075" endY="0.014423076923076924" startX="1.0" startY="0.9615384615384616">
+                           <stops>
+                              <Stop color="#807b7b" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0">
+                     <children>
+                        <TableView prefHeight="200.0" prefWidth="594.0" style="-fx-background-color: Black;">
+                          <columns>
+                            <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Nombre" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Edad" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Equipo" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Puntos" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Rebotes" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Asistencias" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Robos" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Bloqueos" />
+                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Faltas" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
