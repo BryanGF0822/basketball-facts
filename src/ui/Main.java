@@ -13,7 +13,6 @@ public class Main extends Application{
 	
 	public Main() throws IOException {
 		gc = new GUIController();
-		
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -32,7 +31,6 @@ public class Main extends Application{
 		primaryStage.setTitle("Basketball Facts!");
 		primaryStage.setResizable(false);
 		primaryStage.show();
-
 		
 	}
 	
