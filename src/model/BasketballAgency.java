@@ -12,17 +12,22 @@ import collections.*;
 public class BasketballAgency {
 
 	private List<Player> playersList;
-    private AVLTree<Double, Integer> puntosPorPartido;
+    private AVLBSTree<Double, Integer> puntosPorPartido;
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
-		puntosPorPartido = new AVLTree<>();
+		puntosPorPartido = new AVLBSTree<Double, Integer>();
 		
 	}
 	
 	public void addPlayersStatics() {
+		
 		for (int i = 0; i < playersList.size(); i++) {
-			//syso()
+			
+			if(puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido())==null) {
+			    puntosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i);
+			    
+			}
 		}
 	}
 

@@ -1,12 +1,19 @@
 package collections;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
+
+
+import model.Player;
+
+
+
 
 /**
  * Implementation of a generic Binary Search Tree in which whenever are
@@ -31,7 +38,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	 * @param <K,V>, any class that implements the Comparable interface
 	 */
 	@SuppressWarnings("hiding")
-	protected class Node<K extends Comparable<? super K>, V> implements Serializable {
+	public class Node<K extends Comparable<? super K>, V> implements Serializable {
 
 		/**
 		 * 
@@ -54,6 +61,10 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		protected K key;
 
 		protected int height;
+		
+		protected List<Player> samePlayers;
+		
+		
 
 		/**
 		 * The data that Node encapsulates
@@ -68,6 +79,11 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 			this.parent = null;
 			this.key = key;
 			this.height = 0;
+			this.samePlayers = new ArrayList<Player>();
+		}
+		
+		public List<Player> getPlayers(){
+			return samePlayers;
 		}
 	}
 
@@ -151,7 +167,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	 * @return Node<K,V> {@link Node}, the node that contains the data searched. If
 	 *         not found, returns null
 	 */
-	protected Node<K, V> searchNode(K key) {
+	public Node<K, V> searchNode(K key) {
 		Node<K, V> nodeFound = root;
 		boolean found = false;
 		if (root != null) {
