@@ -1,166 +1,164 @@
 package collections;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
-public class AVLTreeTest {
+import java.util.*;
 
-	//------------------------------------------------------------------------------------
+import org.junit.Test;
 
-	// Relation with the class AVLTree
-
-	AVLTree<Integer,Integer> avl;
-
-	//------------------------------------------------------------------------------------
-
-	// Setup1
-
-	void setup1() {
-
-		avl = new AVLTree<Integer,Integer>();
-
-	}
-
-	//------------------------------------------------------------------------------------
-
-	// Setup2
-
-	void setup2() {
-
-		avl = new AVLTree<Integer,Integer>();
-		avl.add(3, 7);
-		avl.add(6, 10);
-		avl.add(17, 5);
-		avl.add(9, 36);
-		avl.add(24, 21);
-		
-	}
-
-	//------------------------------------------------------------------------------------
+public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V> {
 	
-	// Add test 1
+	private AVLBSTree<Integer, Integer> tree;
+	
+	public void emptySetup() {
+		tree = new AVLBSTree<Integer, Integer>();
+	}
+	
+	public void nonEmptySetup() {
+		tree = new AVLBSTree<Integer, Integer>();
+		tree.add(8, 8);
+		tree.add(25, 25);
+		tree.add(5, 5);
+		tree.add(17, 17);
+		tree.add(32, 32);
+	}
 
 	@Test
-	void addTest1 () {
-		
-		setup1();
-		
-		Integer x = 2;
-		Integer y = 6;
-		
-		assertTrue(avl.add(x, y));
-		assertFalse(avl.isEmpty());
-		
-		assertTrue(avl.getHeight()==1);
-		assertTrue(avl.getWeight()==1);
-		
+	public void testAddEmpty() {
+		emptySetup();
+		tree.add(1, 1);
+		assertTrue(tree.root.key == 1);
+		tree.add(2, 2);
+		assertTrue(tree.root.right.key == 2);
+		tree.add(3, 3);
+		assertTrue(tree.root.key == 2);
+		assertTrue((tree.root.left.key == 1) && (tree.root.right.key == 3));
+		assertTrue(check());
 	}
-
-	//------------------------------------------------------------------------------------
 	
-	// Add test 2
+	@Test
+	public void testAddNonEmpty() {
+		nonEmptySetup();
+		assertTrue(tree.inorder().equals(Arrays.asList(new Integer[] {5, 8, 17, 25, 32})));
+		assertTrue(tree.preorder().equals(Arrays.asList(new Integer[] {8, 5, 25, 17, 32})));
+		assertTrue(tree.postorder().equals(Arrays.asList(new Integer[] {5, 17, 32, 25, 8})));
+		tree.add(12, 12);
+		tree.add(40, 40);
+		assertTrue(tree.inorder().equals(Arrays.asList(new Integer[] {5, 8, 12, 17, 25, 32, 40})));
+		assertTrue(tree.preorder().equals(Arrays.asList(new Integer[] {17, 8, 5, 12, 32, 25, 40})));
+		assertTrue(tree.postorder().equals(Arrays.asList(new Integer[] {5, 12, 8, 25, 40, 32, 17})));
+		assertTrue(check());
+	}
 
 	@Test
-	void addTest2 () {
-		
-		setup2();
-		
-		assertTrue(avl.add(60, 8));
-		assertTrue(avl.add(14, 19));
-		assertTrue(avl.add(22, 30));
-		assertTrue(avl.add(13, 4));
-		
-		assertFalse(avl.isEmpty());
-		
-		assertTrue(avl.getWeight() == 9);
-		
+	public void testDeleteEmpty() {
+		emptySetup();
+		tree.add(1, 1);
+		tree.delete(1);
+		assertTrue(tree.root == null);
+		tree.add(25, 25);
+		tree.add(38, 38);
+		tree.add(10, 10);
+		assertTrue(tree.root.right.key == 38);
+		tree.delete(38);
+		assertTrue(tree.root.right == null);
+		assertTrue(tree.root.key == 25);
+		tree.delete(25);
+		assertTrue(tree.root.key == 10);
+		assertTrue(check());
 	}
-
-	//------------------------------------------------------------------------------------
 	
-	// Add test 3
-
 	@Test
-	void addTest3 () {
-		
-		setup1();
-
-		for(int i = 0 ; i < 200000 ; i ++) {
-
-			Integer key =  new Integer((int) (Math.random()*2000));
-
-			Integer value = new Integer((int) Math.random()*2000);
-			
-			assertTrue(avl.add(key, value));
-		}
-		
-		assertEquals(200000,avl.getWeight());
-
+	public void testDeleteNonEmpty() {
+		nonEmptySetup();
+		assertTrue(tree.root.key == 8);
+		tree.delete(8);
+		assertTrue(tree.root.key == 17);
+		assertTrue(tree.height() == 2);
+		tree.delete(5);
+		assertTrue(tree.height() == 1);
+		assertTrue(tree.root.key == 25);
+		assertTrue(check());
 	}
-
-	//------------------------------------------------------------------------------------
 	
-	// Remove test 1
+	/**
+     * Checks if the AVL tree invariants are fine.
+     * 
+     * @return {@code true} if the AVL tree invariants are fine
+     */
+    private boolean check() {
+        if (!isBST()) System.out.println("Symmetric order not consistent");
+        if (!isAVL()) System.out.println("AVL property not consistent");
+        if (!isSizeConsistent()) System.out.println("Subtree counts not consistent");
+        return isBST() && isAVL() && isSizeConsistent();
+    }
+    
+    /**
+     * Checks if AVL property is consistent.
+     * 
+     * @return {@code true} if AVL property is consistent.
+     */
+    private boolean isAVL() {
+        return isAVL(tree.root);
+    }
 
-	@Test
-	void removeTest1() {
-		
-		setup1();
-		
-		Integer x = 35;
-		Integer y = 70;
-		
-		assertFalse(avl.remove(x,y));
-		
-	}
+    /**
+     * Checks if AVL property is consistent in the subtree.
+     * 
+     * @param x the subtree
+     * @return {@code true} if AVL property is consistent in the subtree
+     */
+    private boolean isAVL(BinarySearchTree<Integer, Integer>.Node<Integer, Integer> x) {
+        if (x == null) return true;
+        int bf = tree.balanceFactor(x);
+        if (bf > 1 || bf < -1) return false;
+        return isAVL(x.left) && isAVL(x.right);
+    }
 
-	//------------------------------------------------------------------------------------
-	
-	// Remove test 2
+	/**
+     * Checks if the symmetric order is consistent.
+     * 
+     * @return {@code true} if the symmetric order is consistent
+     */
+    private boolean isBST() {
+        return isBST(tree.root, null, null);
+    }
 
-	@Test
-	void removeTest2() {
-		
-		setup2();
-		
-		assertTrue(avl.remove(3, 7));
-		assertTrue(avl.remove(24, 21));
-		assertTrue(avl.remove(17, 5));
-		
-		assertTrue(avl.getHeight()==2);
-		assertTrue(avl.getWeight()==2);
-		
-	}
+    /**
+     * Checks if the tree rooted at x is a BST with all keys strictly between
+     * min and max (if min or max is null, treat as empty constraint) Credit:
+     * Bob Dondero's elegant solution
+     * 
+     * @param x the subtree
+     * @param min the minimum key in subtree
+     * @param max the maximum key in subtree
+     * @return {@code true} if if the symmetric order is consistent
+     */
+    private boolean isBST(BinarySearchTree<Integer, Integer>.Node<Integer, Integer> x, Integer min, Integer max) {
+        if (x == null) return true;
+        if (min != null && x.key.compareTo(min) <= 0) return false;
+        if (max != null && x.key.compareTo(max) >= 0) return false;
+        return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
+    }
 
-	//------------------------------------------------------------------------------------
-	
-	// Remove test 3
+    /**
+     * Checks if size is consistent.
+     * 
+     * @return {@code true} if size is consistent
+     */
+    private boolean isSizeConsistent() {
+        return isSizeConsistent(root);
+    }
 
-	@Test
-	void removeTest3() {
-		
-		setup1();
-
-		for(int i = 0 ; i < 200000 ; i++) {
-
-			Integer key =  i;
-
-			Integer value = i+1;
-
-			avl.add(key, value);
-
-		}
-
-		for(int a = 0 ; a < 200000 ; a ++) {
-
-			assertTrue(avl.remove(a, a+1));
-
-		}
-		
-		assertTrue(avl.isEmpty());
-		
-	}
-
-	//------------------------------------------------------------------------------------
+    /**
+     * Checks if the size of the subtree is consistent.
+     * 
+     * @return {@code true} if the size of the subtree is consistent
+     */
+    private boolean isSizeConsistent(Node<K, V> x) {
+        if (x == null) return true;
+        if (x.height != height(x.left) + height(x.right) + 1) return false;
+        return isSizeConsistent(x.left) && isSizeConsistent(x.right);
+    }
 
 }
