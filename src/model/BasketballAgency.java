@@ -16,13 +16,14 @@ public class BasketballAgency {
     private AVLBSTree<Double, Integer> puntosPorPartido;
     private AVLBSTree<Double, Integer> rebotesPorPartido;
     private AVLBSTree<Double, Integer> asistenciasPorPartido;
-    
+    private RedBlackBSTree<Double, Integer> robosPorPartido;
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
 		puntosPorPartido = new AVLBSTree<Double, Integer>();
 		rebotesPorPartido = new AVLBSTree<Double, Integer>();
 		asistenciasPorPartido = new AVLBSTree<Double, Integer>();
+		robosPorPartido = new RedBlackBSTree<Double, Integer>();
 	}
 	
 	public void addPlayersStatics() {
@@ -33,31 +34,40 @@ public class BasketballAgency {
 			    
 			    toAdd = puntosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i); 
 			    toAdd.getPlayers().add(playersList.get(i));
-			    System.out.println(toAdd + "   ");
+			    
 			}else {
 				puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido()).getPlayers().add(playersList.get(i));
 			}
 			
 			//Agregar rebotes por partido
-          if(puntosPorPartido.searchNode(playersList.get(i).getRebotesPorPartido())==null) {
+          if(rebotesPorPartido.searchNode(playersList.get(i).getRebotesPorPartido())==null) {
 			    
-			    toAdd = puntosPorPartido.add(playersList.get(i).getRebotesPorPartido(), i); 
+			    toAdd = rebotesPorPartido.add(playersList.get(i).getRebotesPorPartido(), i); 
 			    toAdd.getPlayers().add(playersList.get(i));
+			    
 			}else {
 				puntosPorPartido.searchNode(playersList.get(i).getRebotesPorPartido()).getPlayers().add(playersList.get(i));
 			}
           
           //Agregar asistencias por partido
-          if(puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido())==null) {
+          if(asistenciasPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido())==null) {
+			    
+			    toAdd = asistenciasPorPartido.add(playersList.get(i).getAsistenciasPorPartido(), i); 
+			    toAdd.getPlayers().add(playersList.get(i));
+			    
+			}else {
+				puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
+			}
+          
+          //Agregar robos por partido
+          if(robosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido())==null) {
 			    
 			    toAdd = puntosPorPartido.add(playersList.get(i).getAsistenciasPorPartido(), i); 
 			    toAdd.getPlayers().add(playersList.get(i));
 			}else {
 				puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
 			}
-          
-          //Agregar robos por partido
-          
+         
           
 		}
 	}
