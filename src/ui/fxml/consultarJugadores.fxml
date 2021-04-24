@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
@@ -30,16 +29,8 @@
                      <textFill>
                         <LinearGradient endX="0.23076923076923075" endY="0.014423076923076924" startX="1.0" startY="0.9615384615384616">
                            <stops>
-                              <Stop>
-                                 <color>
-                                    <Color blue="0.010964912362396717" green="0.2627924084663391" red="0.5921052694320679" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color blue="0.3558114171028137" green="0.5590552091598511" red="0.7763158082962036" />
-                                 </color>
-                              </Stop>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
                            </stops>
                         </LinearGradient>
                      </textFill>
@@ -48,16 +39,130 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
                <children>
-                  <Button mnemonicParsing="false" text="Nombre" />
-                  <Button mnemonicParsing="false" text="Robos" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Nombre">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill></Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Edad">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Puntos">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Equipo">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Rebotes">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Asistencia">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Robos">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Bloqueos">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Faltas">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
                </children>
             </HBox>
          </children>
