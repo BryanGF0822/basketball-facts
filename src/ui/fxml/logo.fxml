@@ -4,6 +4,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="logoAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -17,6 +20,17 @@
             <Image url="@../../../img/logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="249.0" layoutY="248.0" mnemonicParsing="false" onAction="#load" text="Button" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#load" style="-fx-background-color: black;" text="Iniciar" underline="true">
+         <font>
+            <Font name="Roboto" size="16.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#974303" />
+                  <Stop color="#c58e5a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Button>
    </children>
 </AnchorPane>
