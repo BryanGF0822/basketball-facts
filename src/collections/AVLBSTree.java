@@ -18,21 +18,13 @@ public class AVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V
 
 
 	@Override
-	protected Node<K, V> add(Node<K, V> node, K key, V value) {
+	public Node<K, V> add(Node<K, V> node, K key, V value) {
 		Node<K, V> x = super.add(node, key, value);
 		x.height = 1 + Math.max(height(x.left), height(x.right));
 		return balance(x);
 	}
 
-	@Override
-	protected Node<K, V> delete(Node<K, V> node, K key) {
-		Node<K, V> x = super.delete(node, key);
-		if(x != null) { // leaf node case
-			x.height = 1 + Math.max(height(x.left), height(x.right));						
-			return balance(x);
-		} else
-			return null;
-	}
+	
 
 	/**
 	 * Restores the AVL tree property of the subtree.

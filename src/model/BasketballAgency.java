@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import collections.*;
@@ -13,20 +14,44 @@ public class BasketballAgency {
 
 	private List<Player> playersList;
     private AVLBSTree<Double, Integer> puntosPorPartido;
+    private AVLBSTree<Double, Integer> rebotesPorPartido;
+    private AVLBSTree<Double, Integer> asistenciasPorPartido;
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
 		puntosPorPartido = new AVLBSTree<Double, Integer>();
-		
+		rebotesPorPartido = new AVLBSTree<Double, Integer>();
+		asistenciasPorPartido = new AVLBSTree<Double, Integer>();
 	}
 	
 	public void addPlayersStatics() {
-		
+		Node<Double, Integer> toAdd;
 		for (int i = 0; i < playersList.size(); i++) {
-			
+			//Agregar puntos por partido
 			if(puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido())==null) {
-			    puntosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i);
 			    
+			    toAdd = puntosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i); 
+			    toAdd.getPlayers().add(playersList.get(i));
+			}else {
+				puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido()).getPlayers().add(playersList.get(i));
+			}
+			
+			//Agregar rebotes por partido
+          if(puntosPorPartido.searchNode(playersList.get(i).getRebotesPorPartido())==null) {
+			    
+			    toAdd = puntosPorPartido.add(playersList.get(i).getRebotesPorPartido(), i); 
+			    toAdd.getPlayers().add(playersList.get(i));
+			}else {
+				puntosPorPartido.searchNode(playersList.get(i).getRebotesPorPartido()).getPlayers().add(playersList.get(i));
+			}
+          
+          //Agregar asistencias por partido
+          if(puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido())==null) {
+			    
+			    toAdd = puntosPorPartido.add(playersList.get(i).getAsistenciasPorPartido(), i); 
+			    toAdd.getPlayers().add(playersList.get(i));
+			}else {
+				puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
 			}
 		}
 	}

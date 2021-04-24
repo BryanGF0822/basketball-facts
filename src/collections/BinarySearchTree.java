@@ -29,63 +29,12 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	 */
 	private static final long serialVersionUID = 3509254229421105483L;
 
-	/**
-	 * This class represents the node of the BST.
-	 * 
-	 * The wild-card Node<K,V extends Comparable<? super K,V>> allows K,V to be a
-	 * type that is a sub-type of some type that implements Comparable
-	 * 
-	 * @param <K,V>, any class that implements the Comparable interface
-	 */
-	@SuppressWarnings("hiding")
-	public class Node<K extends Comparable<? super K>, V> implements Serializable {
-
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 3073345467094967068L;
-
-		/** Parent node */
-		protected Node<K, V> parent;
-
-		/** Left child */
-		protected Node<K, V> left;
-
-		/** Right child */
-		protected Node<K, V> right;
-
-		/** V, the data that the Node encapsulates */
-		protected List<V> values;
-
-		/** K, the key */
-		protected K key;
-
-		protected int height;
-		
-		protected List<Player> samePlayers;
+	
+	
+	
 		
 		
-
-		/**
-		 * The data that Node encapsulates
-		 * 
-		 * @param data, an object of a class K,V that implements Comparable interface
-		 */
-		public Node(K key, V data) {
-			this.values = new LinkedList<V>();
-			this.values.add(data);
-			this.left = null;
-			this.right = null;
-			this.parent = null;
-			this.key = key;
-			this.height = 0;
-			this.samePlayers = new ArrayList<Player>();
-		}
-		
-		public List<Player> getPlayers(){
-			return samePlayers;
-		}
-	}
+	
 
 	/** Root node of the tree */
 	protected Node<K, V> root;
@@ -204,14 +153,17 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	/**
 	 * 
 	 * @param value
+	 * @return 
 	 */
-	public void add(K key, V value) {
+	public Node<K, V> add(K key, V value) {
+		Node<K, V> toAdd = null;
 		if (key == null)
 			throw new IllegalArgumentException("Key cannot be null");
 		else {
-			root = add(root, key, value);
+			toAdd = add(root, key, value);
 			size++;
 		}
+		return toAdd;
 	}
 
 	protected Node<K, V> add(Node<K, V> currentNode, K key, V value) {
