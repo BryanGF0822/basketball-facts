@@ -16,6 +16,7 @@ public class BasketballAgency {
     private AVLBSTree<Double, Integer> puntosPorPartido;
     private AVLBSTree<Double, Integer> rebotesPorPartido;
     private AVLBSTree<Double, Integer> asistenciasPorPartido;
+    
 	public BasketballAgency() {
 
 		playersList = new ArrayList<Player>();
@@ -32,6 +33,7 @@ public class BasketballAgency {
 			    
 			    toAdd = puntosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i); 
 			    toAdd.getPlayers().add(playersList.get(i));
+			    System.out.println(toAdd + "   ");
 			}else {
 				puntosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido()).getPlayers().add(playersList.get(i));
 			}
@@ -53,6 +55,10 @@ public class BasketballAgency {
 			}else {
 				puntosPorPartido.searchNode(playersList.get(i).getAsistenciasPorPartido()).getPlayers().add(playersList.get(i));
 			}
+          
+          //Agregar robos por partido
+          
+          
 		}
 	}
 
