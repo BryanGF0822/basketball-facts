@@ -41,10 +41,12 @@ public class GUIController {
 	// ********** import csv path **********
 	private final String CSV_PATH =  "data/players.csv";
 	
-	public GUIController() {}
+	public GUIController() {
+		ba = new BasketballAgency();
+	}
 	
 	public void initialize() {
-		if (ba == null) {
+		/*if (ba == null) {
 			ba = new BasketballAgency();
 
 			// import player information before opening the principal window.
@@ -61,12 +63,29 @@ public class GUIController {
 				// TODO: handle exception with an alert that displays the content of the error.
 			} 
 			
-		}
+		}*/
 	}
+	/*
+	public void importData() {
+		try {
+			ba.importPlayers(CSV_PATH);
+			
+			//Closes logo loading window.
+			Stage logoStage = (Stage) logoAP.getScene().getWindow();
+		    logoStage.close();
+			
+			LoadMainWindow();
+		    
+		} catch (IOException ioException) {
+			// TODO: handle exception with an alert that displays the content of the error.
+		} 
+		
+	}
+	*/
 	
 	// ********** load fxml **********
 	
-	private void LoadMainWindow() {
+	public void LoadMainWindow() {
 		try {
 			FXMLLoader fxmll = new FXMLLoader(getClass().getResource("fxml/consultarJugadores.fxml"));
 			fxmll.setController(this);
@@ -81,6 +100,22 @@ public class GUIController {
 			// TODO: handle exception with an alert that displays the content of the error.
 		} 
 	}
+	
+	@FXML
+    void load(ActionEvent event) {
+		try {
+			ba.importPlayers(CSV_PATH);
+			
+			//Closes logo loading window.
+			Stage logoStage = (Stage) logoAP.getScene().getWindow();
+		    logoStage.close();
+			
+			LoadMainWindow();
+		    
+		} catch (IOException ioException) {
+			// TODO: handle exception with an alert that displays the content of the error.
+		} 
+    }
 
     // ********** Principal Windows Actions **********
     @FXML

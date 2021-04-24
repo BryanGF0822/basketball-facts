@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.BasketballAgency;
 
 public class Main extends Application{
 	
@@ -18,9 +17,9 @@ public class Main extends Application{
 	}
 	
 	public static void main(String[] args) throws IOException {
-		
 		//GUI
 		launch(args);
+		
 	}
 	
 	@Override
@@ -32,10 +31,9 @@ public class Main extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Basketball Facts!");
 		primaryStage.setResizable(false);
-		
+		primaryStage.show();
+
 		
 	}
-
-	
 	
 }
