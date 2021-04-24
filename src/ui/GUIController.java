@@ -9,8 +9,9 @@ import javafx.scene.control.TextField;
 import model.BasketballAgency;
 
 public class GUIController {
-	
-	// ********** search name window **********
+
+
+    // ********** search name window **********
 	@FXML
     private Label filterByNameLabel;
 
@@ -36,6 +37,52 @@ public class GUIController {
 		ba.importPlayers("data/players.csv");
 		
 	}
+
+    // ********** Principal Windows Actions **********
+    @FXML
+    void filterByAge(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByAssistance(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByBlocks(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByFouls(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByName(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByRebounds(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByScore(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterBySteal(ActionEvent event) {
+
+    }
+
+    @FXML
+    void filterByTeam(ActionEvent event) {
+
+    }
 	
 	// ********** search name window action **********
     @FXML

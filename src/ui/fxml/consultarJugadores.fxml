@@ -39,7 +39,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Nombre">
+                  <Button mnemonicParsing="false" onAction="#filterByName" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Nombre">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -51,7 +51,7 @@
                            </stops>
                         </LinearGradient>
                      </textFill></Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Edad">
+                  <Button mnemonicParsing="false" onAction="#filterByAge" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Edad">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -64,50 +64,7 @@
                         </LinearGradient>
                      </textFill>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Puntos">
-                     <font>
-                        <Font name="Roboto" size="13.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="#974303" />
-                              <Stop color="#c58e5a" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Button>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
-               <children>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Equipo">
-                     <font>
-                        <Font name="Roboto" size="13.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="#974303" />
-                              <Stop color="#c58e5a" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Rebotes">
-                     <font>
-                        <Font name="Roboto" size="13.0" />
-                     </font>
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="#974303" />
-                              <Stop color="#c58e5a" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                  </Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Asistencia">
+                  <Button mnemonicParsing="false" onAction="#filterByScore" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Puntos">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -124,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Robos">
+                  <Button mnemonicParsing="false" onAction="#filterByTeam" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Equipo">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -137,7 +94,7 @@
                         </LinearGradient>
                      </textFill>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Bloqueos">
+                  <Button mnemonicParsing="false" onAction="#filterByRebounds" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Rebotes">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
@@ -150,7 +107,50 @@
                         </LinearGradient>
                      </textFill>
                   </Button>
-                  <Button mnemonicParsing="false" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Faltas">
+                  <Button mnemonicParsing="false" onAction="#filterByAssistance" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Asistencia">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#filterBySteal" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Robos">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#filterByBlocks" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Bloqueos">
+                     <font>
+                        <Font name="Roboto" size="13.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#974303" />
+                              <Stop color="#c58e5a" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#filterByFouls" prefWidth="81.0" style="-fx-background-color: black; -fx-border-color: orange;" text="Faltas">
                      <font>
                         <Font name="Roboto" size="13.0" />
                      </font>
