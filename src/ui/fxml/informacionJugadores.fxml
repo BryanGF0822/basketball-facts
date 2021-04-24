@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -39,11 +40,11 @@
                   </Label>
                </children>
             </HBox>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+            <ScrollPane prefHeight="139.0" prefWidth="600.0" style="-fx-background-color: black;">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="594.0" style="-fx-background-color: Black;">
+                        <TableView prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
                           <columns>
                             <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Nombre" />
                               <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Edad" />
@@ -63,6 +64,11 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#backWindowInicio" style="-fx-background-color: blac;" text="Inicio" textFill="#d3d3d3" underline="true">
+               <font>
+                  <Font name="Roboto" size="14.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </children>

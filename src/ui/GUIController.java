@@ -273,6 +273,11 @@ public class GUIController {
     void searchByRange(ActionEvent event) {
 		LoadInfoWindow();
     }
+	// ********** Back to window Initial **********
+	@FXML
+	void backWindowInicio(ActionEvent event) {
+		LoadMainWindow();
+	}
 	
 	
 }
