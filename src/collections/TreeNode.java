@@ -1,5 +1,6 @@
 package collections;
 
+@SuppressWarnings("rawtypes")
 public class TreeNode<K extends Comparable, V> {
     public Color color;
     public K key;

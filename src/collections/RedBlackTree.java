@@ -91,7 +91,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
             }
         }
         // new node to store key and value
-        TreeNode<K, V> z = new TreeNode<>(Color.RED, key, val);
+        TreeNode<K, V> z = new TreeNode<K, V>(Color.RED, key, val);
         // x == null, need to replace x with z
         // y is x's parent
         z.parent = y;
@@ -320,7 +320,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
     @Override
     public String toString(){
         // traverse tree in level order
-        LinkedList<TreeNode<K, V>> queue = new LinkedList<>();
+        LinkedList<TreeNode<K, V>> queue = new LinkedList<TreeNode<K, V>>();
         StringBuilder sb = new StringBuilder();
         queue.addLast(root);
         while(!queue.isEmpty()){
