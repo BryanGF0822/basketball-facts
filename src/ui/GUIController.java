@@ -1,16 +1,23 @@
 package ui;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.BasketballAgency;
 
 public class GUIController {
-
-
+	
+	// ********** Logo window **********
+	@FXML
+    private AnchorPane logoAP;
+	
     // ********** search name window **********
 	@FXML
     private Label filterByNameLabel;
@@ -31,11 +38,48 @@ public class GUIController {
     // ********** model atributes **********
 	private static BasketballAgency ba ;
 	
-	public GUIController() throws IOException {
-		
-		ba = new BasketballAgency();
-		ba.importPlayers("data/players.csv");
-		
+	// ********** import csv path **********
+	private final String CSV_PATH =  "data/players.csv";
+	
+	public GUIController() {}
+	
+	public void initialize() {
+		if (ba == null) {
+			ba = new BasketballAgency();
+
+			// import player information before opening the principal window.
+			try {
+				ba.importPlayers(CSV_PATH);
+				
+				LoadMainWindow();
+				
+				//Closes logo loading window.
+				Stage logoStage = (Stage) logoAP.getScene().getWindow();
+			    logoStage.close();
+			    
+			} catch (IOException ioException) {
+				// TODO: handle exception with an alert that displays the content of the error.
+			} 
+			
+		}
+	}
+	
+	// ********** load fxml **********
+	
+	private void LoadMainWindow() {
+		try {
+			FXMLLoader fxmll = new FXMLLoader(getClass().getResource("fxml/consultarJugadores.fxml"));
+			fxmll.setController(this);
+			Parent root = fxmll.load();
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("Basketball Facts!");
+			stage.show();
+
+		} catch (IOException ioException) {
+			// TODO: handle exception with an alert that displays the content of the error.
+		} 
 	}
 
     // ********** Principal Windows Actions **********
