@@ -82,7 +82,6 @@ public class BinarySearchTree<K extends Comparable<K>, T extends Player>
 		}
 	}
 
-	@Override
 	public boolean update(K key, T value) {
 
 		Node<K, T> nodeToUpdate = searchNode(key);
@@ -102,7 +101,6 @@ public class BinarySearchTree<K extends Comparable<K>, T extends Player>
 
 	}
 
-	@Override
 	public boolean remove(K key) {
 		if (root != null) {
 			return removeRecursive(key, root, null);
@@ -188,7 +186,6 @@ public class BinarySearchTree<K extends Comparable<K>, T extends Player>
 
 	}
 
-	@Override
 	public T search(K key) {
 
 		if (root != null) {

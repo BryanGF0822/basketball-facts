@@ -18,7 +18,7 @@ class BinarySearchTreeTest<K, V> {
 	
 	void setup1() {
 		
-		binarySearch = new BinarySearchTree<>();
+		binarySearch = new BinarySearchTree<Integer, Integer>();
 		
 	}
 	
@@ -48,7 +48,7 @@ class BinarySearchTreeTest<K, V> {
 	
 	void setup3() {
 		
-		binarySearch = new BinarySearchTree<>();
+		binarySearch = new BinarySearchTree<Integer, Integer>();
 		
 		binarySearch.add(50, 0);
 		
@@ -289,49 +289,6 @@ class BinarySearchTreeTest<K, V> {
 	 * 3. Have to be different to empty String.
 	 */
 	
-	@Test
-	void testPreOrder() {
-		
-		setup4();
-		
-		assertTrue(binarySearch.preOrder() != "");
-		
-	}
 	
-	//--------------------------------------------------------------------------------
-	
-	/*
-	 * 1. We use the setup4
-	 * 2. We compare the String
-	 * 3. Have to be different to empty String.
-	 */
-	
-	@Test
-	void testInOrder() {
-		
-		setup4();
-		
-		assertTrue(binarySearch.inOrder() != "");
-		
-	}
-	
-	//--------------------------------------------------------------------------------
-	
-	/*
-	 * 1. We use the setup4
-	 * 2. We compare the String
-	 * 3. Have to be different to empty String.
-	 */
-	
-	@Test
-	void testPostOrden() {
-		
-		setup4();
-		
-		assertTrue(binarySearch.postOrder() != "");
-		
-	}
-	
-	//--------------------------------------------------------------------------------
 	
 }
