@@ -23,7 +23,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="300.0">
                <children>
-                  <Label fx:id="filterByRangeLabel" text="NOMBRE">
+                  <Label fx:id="filterByNameLabel" text="NOMBRE">
                      <textFill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -37,8 +37,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="300.0" spacing="50.0">
                <children>
-                  <TextField fx:id="minRange" prefHeight="25.0" prefWidth="101.0" promptText="Min" />
-                  <TextField fx:id="maxRange" prefHeight="25.0" prefWidth="100.0" promptText="Max" />
+                  <TextField fx:id="nameToSearch" prefHeight="25.0" prefWidth="180.0" promptText="Nombre" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -46,7 +45,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#searchByRange" text="Buscar" />
+                  <Button mnemonicParsing="false" onAction="#searchByName" text="Buscar" />
                </children>
             </HBox>
          </children>
