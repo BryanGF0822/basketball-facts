@@ -1,5 +1,8 @@
 package collections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AVLTreeNode<K extends Comparable<K>, V> extends Node<K, V> {
 	
 	//------------------------------------------------------------------------------------
@@ -9,6 +12,7 @@ public class AVLTreeNode<K extends Comparable<K>, V> extends Node<K, V> {
 	private static final long serialVersionUID = 49097610139670076L;
 	
 	private int balanceFactor;	
+	private   List<K> ciedPlayers;
 	
 	//------------------------------------------------------------------------------------
 	
@@ -19,6 +23,7 @@ public class AVLTreeNode<K extends Comparable<K>, V> extends Node<K, V> {
 		super(key,value);
 		
 		balanceFactor = 0;	
+		ciedPlayers = new ArrayList<K>();
 		
 	}
 	
