@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -88,6 +89,65 @@ public class BasketballAgency {
          
           
 		}
+	}
+	
+	public ArrayList<Player> searchPlayers(String parameter,Double min, Double max){
+		List<Player> toPrint = new ArrayList<Player>();
+		switch (parameter) 
+        {
+            case  "nombre": 
+            	 toPrint =linearSearch(min, max);
+                     break;
+            case "edad":  
+            	 toPrint =linearSearch(min, max);
+                     break;
+            case "puntos":
+            	 toPrint =AVLSearch(min, max);
+                     break;
+            case "equipo": 
+            	toPrint =linearSearch(min, max);
+                     break;
+            case "rebotes": 
+            	toPrint =AVLSearch(min, max);
+                     break;
+            case "asistencias":
+            	toPrint =AVLSearch(min, max);            	
+                     break;
+            case "robos": 
+            	toPrint =redBlackSearch(min, max);
+            	
+                     break;
+            case "bloqueos":
+            	toPrint =BinarySearch(min, max);
+            break;
+            case "faltas": 
+            	toPrint =linearSearch(min, max);
+            break;
+            default: parameter = "Característica inválida";
+                     break;
+        }
+	    return (ArrayList<Player>) toPrint;	
+	}
+
+	private List<Player> BinarySearch(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		
+		return toPrint;
+	}
+
+	private List<Player> redBlackSearch(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		return toPrint;
+	}
+
+	private List<Player> AVLSearch(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		return toPrint;
+	}
+
+	private List<Player> linearSearch(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		return toPrint;
 	}
 
 	public void importPlayers(String fn) throws IOException {
