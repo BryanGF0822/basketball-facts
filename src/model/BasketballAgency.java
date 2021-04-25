@@ -90,23 +90,20 @@ public class BasketballAgency {
           
 		}
 	}
+
+
 	
 	public ArrayList<Player> searchPlayers(String parameter,Double min, Double max){
 		List<Player> toPrint = new ArrayList<Player>();
 		switch (parameter) 
         {
-            case  "nombre": 
-            	 toPrint =linearSearchNombre(min, max);
-                     break;
             case "edad":  
             	 toPrint =linearSearchEdad(min, max);
                      break;
             case "puntos":
             	 toPrint =AVLSearchPuntos(min, max);
                      break;
-            case "equipo": 
-            	toPrint =linearSearchEquipo(min, max);
-                     break;
+
             case "rebotes": 
             	toPrint =AVLSearchRebotes(min, max);
                      break;
@@ -123,13 +120,29 @@ public class BasketballAgency {
             case "faltas": 
             	toPrint =linearSearchFaltas(min, max);
             break;
-            default: parameter = "Característica inválida";
+            default: parameter = "Caracterï¿½stica invï¿½lida";
                      break;
         }
 	    return (ArrayList<Player>) toPrint;	
 	}
+///Buscar nombre de jugador o de equipo
+	public ArrayList<Player> searchPlayers2(String parameter, String name){
 
-	
+		List<Player> toPrint = new ArrayList<Player>();
+
+		switch (parameter) {
+			case "nombre":
+				toPrint = linearSearchNombre(name);
+				break;
+			case "equipo":
+				toPrint = linearSearchEquipo(name);
+				break;
+			default: parameter = "Caracterï¿½stica invï¿½lida";
+				break;
+		}
+		return (ArrayList<Player>) toPrint;
+	}
+
 
 	private List<Player> linearSearchFaltas(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
@@ -175,10 +188,12 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> linearSearchEquipo(Double min, Double max) {
+	private List<Player> linearSearchEquipo(String name) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		for (int i = 0; i < playersList.size(); i+= 0.1) {
+			if (playersList.get(i).getNombre().equalsIgnoreCase(name)){
+				toPrint.add(playersList.get(i));
+			}
 		}
 		return toPrint;
 	}
@@ -192,6 +207,7 @@ public class BasketballAgency {
 	}
 
 	private List<Player> linearSearchEdad(Double min, Double max) {
+
 		List<Player> toPrint = new ArrayList<Player>();
 		for (int i = 0; i < max; i+= 0.1) {
 			
@@ -199,10 +215,14 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> linearSearchNombre(Double min, Double max) {
+	private List<Player> linearSearchNombre(String name) {
+
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+
+		for (int i = 0; i < playersList.size(); i+= 0.1) {
+			if (playersList.get(i).getEquipo().equalsIgnoreCase(name)){
+				toPrint.add(playersList.get(i));
+			}
 		}
 		return toPrint;
 	}
