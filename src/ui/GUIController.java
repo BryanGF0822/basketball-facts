@@ -338,7 +338,7 @@ public class GUIController {
    
     	if (name.equals("Asistencias") || name.equals("Puntos")) {
 			if (SCORE_ASSISTANCE_RANGE_MIN > min || SCORE_ASSISTANCE_RANGE_MAX < max) {
-				throw new InvalidRangeException(min, max, name);
+				throw new InvalidRangeException(SCORE_ASSISTANCE_RANGE_MIN, SCORE_ASSISTANCE_RANGE_MAX, name);
 			}else {
 				return;
 			}
@@ -346,7 +346,7 @@ public class GUIController {
     	
     	if (name.equals("Robos") || name.equals("Bloqueos")) {
 			if (BLOCKS_STEALS_RANGE_MIN > min || BLOCKS_STEALS_RANGE_MAX < max) {
-				throw new InvalidRangeException(min, max, name);
+				throw new InvalidRangeException(BLOCKS_STEALS_RANGE_MIN, BLOCKS_STEALS_RANGE_MAX, name);
 			}else {
 				return;
 			}
@@ -354,7 +354,7 @@ public class GUIController {
     	
     	if (name.equals("Edad")) {
 			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < max) {
-				throw new InvalidRangeException(min, max, name);
+				throw new InvalidRangeException(AGE_RANGE_MIN, AGE_RANGE_MAX, name);
 			}else {
 				return;
 			}
@@ -363,7 +363,7 @@ public class GUIController {
     	
     	if (name.equals("Rebotes")) {
 			if (REBOUNDS_RANGE_MIN > min || REBOUNDS_RANGE_MAX < max) {
-				throw new InvalidRangeException(min, max, name);
+				throw new InvalidRangeException(REBOUNDS_RANGE_MIN, REBOUNDS_RANGE_MAX, name);
 			}else {
 				return;
 			}
@@ -371,7 +371,7 @@ public class GUIController {
     	
     	if (name.equals("Faltas")) {
 			if (FOULS_RANGE_MIN > min || FOULS_RANGE_MAX < max) {
-				throw new InvalidRangeException(min, max, name);
+				throw new InvalidRangeException(FOULS_RANGE_MIN, FOULS_RANGE_MAX, name);
 			}else {
 				return;
 			}
@@ -382,8 +382,9 @@ public class GUIController {
     private void invalidRangeAlert(String message) {
     	Alert error = new Alert(AlertType.ERROR);
 		error.setTitle("Error");
-		error.setHeaderText("Invalid Name to Search");
+		error.setHeaderText("Invalid range to Search");
 		error.setContentText(message);
+		error.initOwner(filterByRangeLabel.getScene().getWindow());
 		error.showAndWait();
     }
     
