@@ -20,7 +20,7 @@
       </ImageView>
       <VBox prefHeight="337.0" prefWidth="600.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="windowCosultarJugadores" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="310.0" text="Consultar Jugadores" textOverrun="CENTER_ELLIPSIS">
                      <font>

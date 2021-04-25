@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.BasketballAgency;
@@ -38,6 +39,10 @@ public class GUIController {
 
     @FXML
     private TextField maxRange;
+
+	// ********** Id Window consultarJugadores **********
+	@FXML
+	private HBox windowCosultarJugadores;
     
     // ********** model atributes **********
 	private static BasketballAgency ba ;
@@ -175,8 +180,7 @@ public class GUIController {
 		
 		
 	}
-	
-	
+
 	 private void closeSearchStage() {
 		 isSearching = false;
 	}
@@ -391,7 +395,10 @@ public class GUIController {
 	// ********** Back to window Initial **********
 	@FXML
 	void backWindowInicio(ActionEvent event) {
+
 		LoadMainWindow();
+		Stage stage = (Stage) windowCosultarJugadores.getScene().getWindow();
+		stage.close();
 	}
 	
 	
