@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -42,6 +44,10 @@ public class GUIController {
 	
 	// ********** import csv path **********
 	private final String CSV_PATH =  "data/players.csv";
+	
+	// ********** range limits **********
+	private final int AGE_RANGE_MIN = 18; 
+	private final int AGE_RANGE_MAX = 45; 
 	
 	// ********** controller atributes **********
 	private boolean isSearching;
@@ -273,19 +279,68 @@ public class GUIController {
         		throw new InvalidNameException(filterByNameLabel.getText());
     		}
         	
+        	Stage stage = (Stage) nameToSearch.getScene().getWindow();
+            stage.close();
+            
     		LoadInfoWindow();
     		
 		} catch (InvalidNameException iNE) {
-			// TODO: handle exception
+			invalidNameAlert(iNE.getMessage());
 		}
     	
+    }
+    
+    private void invalidNameAlert(String message) {
+    	Alert error = new Alert(AlertType.ERROR);
+		error.setTitle("Error");
+		error.setHeaderText("Invalid Name to Search");
+		error.setContentText(message);
+		error.showAndWait();
     }
     
     // ********** search range action **********
     @FXML
     void searchByRange(ActionEvent event) {
-		LoadInfoWindow();
+    	try {
+    		double min = Integer.parseInt(minRange.getText());
+    		double max = Integer.parseInt(maxRange.getText());
+    		
+    		validateRange(min,max,filterByRangeLabel.getText());
+    		
+    		Stage stage = (Stage) filterByRangeLabel.getScene().getWindow();
+            stage.close();
+    		
+    		LoadInfoWindow();
+    		
+		} catch (InvalidRangeException iRE) {
+			invalidRangeAlert(iRE.getMessage());
+			
+		} catch (NumberFormatException nFE) {
+			invalidRangeAlert("Invalid number format, Check that the entered data is a number.");
+			
+		}
+		
     }
+    
+    private void validateRange(double min, double max, String name) throws InvalidRangeException{
+    	if (name.equals("Edad")) {
+			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < max) {
+				throw new InvalidRangeException(min, max, name);
+			}else {
+				return;
+			}
+		}
+    	
+    }
+    
+    private void invalidRangeAlert(String message) {
+    	Alert error = new Alert(AlertType.ERROR);
+		error.setTitle("Error");
+		error.setHeaderText("Invalid Name to Search");
+		error.setContentText(message);
+		error.showAndWait();
+    }
+    
 	// ********** Back to window Initial **********
 	@FXML
 	void backWindowInicio(ActionEvent event) {
