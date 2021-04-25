@@ -133,8 +133,12 @@ public class BasketballAgency {
 
 	private List<Player> linearSearchFaltas(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
+		for (int i = 0; i < playersList.size(); i+= 0.1) {
 			
+			if (playersList.get(i).getFaltasPorPartido() >= min && playersList.get(i).getFaltasPorPartido() <= max) {
+				
+				toPrint.add(playersList.get(i));
+			}
 		}
 		return toPrint;
 	}
