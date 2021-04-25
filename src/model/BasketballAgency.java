@@ -238,8 +238,12 @@ public class BasketballAgency {
 	private List<Player> linearSearchEdad(double min, double max) {
 
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
+		for (int i = 0; i <= max; i++) {
 			
+			if (playersList.get(i).getEdad() >= (int)min && playersList.get(i).getEdad() <= (int)max) {
+				
+				toPrint.add(playersList.get(i));
+			}
 		}
 		return toPrint;
 	}
