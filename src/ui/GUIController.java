@@ -49,6 +49,18 @@ public class GUIController {
 	private final int AGE_RANGE_MIN = 18; 
 	private final int AGE_RANGE_MAX = 45; 
 	
+	private final int SCORE_ASSISTANCE_RANGE_MIN = 1; 
+	private final int SCORE_ASSISTANCE_RANGE_MAX = 80; 
+
+	private final int BLOCKS_STEALS_RANGE_MIN = 1; 
+	private final int BLOCKS_STEALS_RANGE_MAX = 60; 
+	
+	private final int REBOUNDS_RANGE_MIN = 1; 
+	private final int REBOUNDS_RANGE_MAX = 90; 
+	
+	private final int FOULS_RANGE_MIN = 1; 
+	private final int FOULS_RANGE_MAX = 30; 
+	
 	// ********** controller atributes **********
 	private boolean isSearching;
 	
@@ -184,7 +196,7 @@ public class GUIController {
     @FXML
     void filterByAssistance(ActionEvent event) {
     	if (!isSearching) {
-    		LoadSearchByRangeWindow("asistencias");
+    		LoadSearchByRangeWindow("Asistencias");
     		
 		}else {
 			//TODO
@@ -323,8 +335,42 @@ public class GUIController {
     }
     
     private void validateRange(double min, double max, String name) throws InvalidRangeException{
+   
+    	if (name.equals("Asistencias") || name.equals("Puntos")) {
+			if (SCORE_ASSISTANCE_RANGE_MIN > min || SCORE_ASSISTANCE_RANGE_MAX < max) {
+				throw new InvalidRangeException(min, max, name);
+			}else {
+				return;
+			}
+		}
+    	
+    	if (name.equals("Robos") || name.equals("Bloqueos")) {
+			if (BLOCKS_STEALS_RANGE_MIN > min || BLOCKS_STEALS_RANGE_MAX < max) {
+				throw new InvalidRangeException(min, max, name);
+			}else {
+				return;
+			}
+		}
+    	
     	if (name.equals("Edad")) {
 			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < max) {
+				throw new InvalidRangeException(min, max, name);
+			}else {
+				return;
+			}
+		}
+    	
+    	
+    	if (name.equals("Rebotes")) {
+			if (REBOUNDS_RANGE_MIN > min || REBOUNDS_RANGE_MAX < max) {
+				throw new InvalidRangeException(min, max, name);
+			}else {
+				return;
+			}
+		}
+    	
+    	if (name.equals("Faltas")) {
+			if (FOULS_RANGE_MIN > min || FOULS_RANGE_MAX < max) {
 				throw new InvalidRangeException(min, max, name);
 			}else {
 				return;
