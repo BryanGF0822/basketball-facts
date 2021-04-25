@@ -145,10 +145,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		return (found != null);
 	}
 
-	public List<V> search(K key) {
-		Node<K, V> found = searchNode(key);
-		return (found == null) ? null : found.values;
-	}
+	
 
 	/**
 	 * 

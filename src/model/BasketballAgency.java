@@ -93,7 +93,7 @@ public class BasketballAgency {
 
 
 	
-	public ArrayList<Player> searchPlayers(String parameter,Double min, Double max){
+	public ArrayList<Player> searchPlayersForNumericSta(String parameter,Double min, Double max){
 		List<Player> toPrint = new ArrayList<Player>();
 		switch (parameter) 
         {
@@ -158,32 +158,56 @@ public class BasketballAgency {
 
 	private List<Player> BinarySearchBloqueos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		Node<Double, Integer> temp;
+		for (Double i = (double) 0; i < max; i+= 0.1) {
+			temp = bloqueosPorPartido.searchNode(i);
+			if(temp != null) {
+				for (int j = 0; j < temp.getPlayers().size(); j++) {
+					toPrint.add(temp.getPlayers().get(j));
+				}
+			}
 		}
 		return toPrint;
 	}
 
 	private List<Player> redBlackSearchRobos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		TreeNode<Double, Integer> temp;
+		for (Double i = (double) 0; i < max; i+= 0.1) {
+			temp = robosPorPartido.find(i);
+			if(temp != null) {
+				for (int j = 0; j < temp.getPlayers().size(); j++) {
+					toPrint.add(temp.getPlayers().get(j));
+				}
+			}
 		}
 		return toPrint;
 	}
 
 	private List<Player> AVLSearchAsistencias(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		Node<Double, Integer> temp;
+		for (Double i = (double) 0; i < max; i+= 0.1) {
+			temp = asistenciasPorPartido.searchNode(i);
+			if(temp != null) {
+				for (int j = 0; j < temp.getPlayers().size(); j++) {
+					toPrint.add(temp.getPlayers().get(j));
+				}
+			}
 		}
 		return toPrint;
 	}
 
 	private List<Player> AVLSearchRebotes(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		Node<Double, Integer> temp;
+		for (Double i = (double) 0; i < max; i+= 0.1) {
+			temp = rebotesPorPartido.searchNode(i);
+			if(temp != null) {
+				for (int j = 0; j < temp.getPlayers().size(); j++) {
+					toPrint.add(temp.getPlayers().get(j));
+				}
+			}
 		}
 		return toPrint;
 	}
@@ -200,8 +224,14 @@ public class BasketballAgency {
 
 	private List<Player> AVLSearchPuntos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < max; i+= 0.1) {
-			
+		Node<Double, Integer> temp;
+		for (Double i = (double) 0; i < max; i+= 0.1) {
+			temp = puntosPorPartido.searchNode(i);
+			if(temp != null) {
+				for (int j = 0; j < temp.getPlayers().size(); j++) {
+					toPrint.add(temp.getPlayers().get(j));
+				}
+			}
 		}
 		return toPrint;
 	}
