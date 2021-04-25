@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.BasketballAgency;
+import customExceptions.*;
 
 public class GUIController {
 	
@@ -265,7 +266,19 @@ public class GUIController {
 	// ********** search name window action **********
     @FXML
     void searchByName(ActionEvent event) {
-		LoadInfoWindow();
+    	try {
+    		String name = nameToSearch.getText();
+        	
+        	if (name.equals("") || name.equals(null)) {
+        		throw new InvalidNameException(filterByNameLabel.getText());
+    		}
+        	
+    		LoadInfoWindow();
+    		
+		} catch (InvalidNameException iNE) {
+			// TODO: handle exception
+		}
+    	
     }
     
     // ********** search range action **********
