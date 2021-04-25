@@ -70,9 +70,8 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
         y.parent = x;
     }
      
-
+//TreeNode<K,V> toOut = null;
     public TreeNode<K,V> insert(K key, V val) {
-    	TreeNode<K,V> toOut = null;
         if(key == null) return null;
         TreeNode<K, V> y = null;
         TreeNode<K, V> x = this.root;
@@ -87,12 +86,12 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
                 x = x.right;
             } else {
                 // key == x.key
-                x = toOut;
-                return toOut;
+                
+                return  x;
             }
         }
         // new node to store key and value
-        TreeNode<K, V> z = new TreeNode<K, V>(Color.RED, key, val);
+        TreeNode<K, V> z = new TreeNode<>(Color.RED, key, val);
         // x == null, need to replace x with z
         // y is x's parent
         z.parent = y;
@@ -108,7 +107,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
             y.right = z;
         }
         insertFixup(z);
-        return toOut;
+        return z;
     }
 
     public void insertFixup(TreeNode<K, V> z) {
