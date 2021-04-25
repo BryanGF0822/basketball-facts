@@ -96,32 +96,32 @@ public class BasketballAgency {
 		switch (parameter) 
         {
             case  "nombre": 
-            	 toPrint =linearSearch(min, max);
+            	 toPrint =linearSearchNombre(min, max);
                      break;
             case "edad":  
-            	 toPrint =linearSearch(min, max);
+            	 toPrint =linearSearchEdad(min, max);
                      break;
             case "puntos":
-            	 toPrint =AVLSearch(min, max);
+            	 toPrint =AVLSearchPuntos(min, max);
                      break;
             case "equipo": 
-            	toPrint =linearSearch(min, max);
+            	toPrint =linearSearchEquipo(min, max);
                      break;
             case "rebotes": 
-            	toPrint =AVLSearch(min, max);
+            	toPrint =AVLSearchRebotes(min, max);
                      break;
             case "asistencias":
-            	toPrint =AVLSearch(min, max);            	
+            	toPrint =AVLSearchAsistencias(min, max);            	
                      break;
             case "robos": 
-            	toPrint =redBlackSearch(min, max);
+            	toPrint =redBlackSearchRobos(min, max);
             	
                      break;
             case "bloqueos":
-            	toPrint =BinarySearch(min, max);
+            	toPrint =BinarySearchBloqueos(min, max);
             break;
             case "faltas": 
-            	toPrint =linearSearch(min, max);
+            	toPrint =linearSearchFaltas(min, max);
             break;
             default: parameter = "Característica inválida";
                      break;
@@ -129,24 +129,77 @@ public class BasketballAgency {
 	    return (ArrayList<Player>) toPrint;	
 	}
 
-	private List<Player> BinarySearch(Double min, Double max) {
+	
+
+	private List<Player> linearSearchFaltas(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
 		return toPrint;
 	}
 
-	private List<Player> redBlackSearch(Double min, Double max) {
+	private List<Player> BinarySearchBloqueos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
 		return toPrint;
 	}
 
-	private List<Player> AVLSearch(Double min, Double max) {
+	private List<Player> redBlackSearchRobos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
 		return toPrint;
 	}
 
-	private List<Player> linearSearch(Double min, Double max) {
+	private List<Player> AVLSearchAsistencias(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
+		return toPrint;
+	}
+
+	private List<Player> AVLSearchRebotes(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
+		return toPrint;
+	}
+
+	private List<Player> linearSearchEquipo(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
+		return toPrint;
+	}
+
+	private List<Player> AVLSearchPuntos(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
+		return toPrint;
+	}
+
+	private List<Player> linearSearchEdad(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
+		return toPrint;
+	}
+
+	private List<Player> linearSearchNombre(Double min, Double max) {
+		List<Player> toPrint = new ArrayList<Player>();
+		for (int i = 0; i < max; i+= 0.1) {
+			
+		}
 		return toPrint;
 	}
 
