@@ -18,7 +18,7 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
 	
 	public void nonEmptySetup() {
 		tree = new AVLBSTree<Integer, Integer>();
-		tree.add(8, 8);
+		tree.add(1, 8);
 		tree.add(25, 25);
 		tree.add(5, 5);
 		tree.add(17, 17);
@@ -104,19 +104,23 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
         return isAVL(tree.root);
     }
 
-    /**
+    private boolean isAVL(Node<Integer, Integer> root) {
+		return false;
+	}
+
+	/**
      * Checks if AVL property is consistent in the subtree.
      * 
      * @param x the subtree
      * @return {@code true} if AVL property is consistent in the subtree
-     */
-    private boolean isAVL(BinarySearchTree<Integer, Integer>.Node<Integer, Integer> x) {
+     
+    private boolean isAVL(BinarySearchTree<K,V>.Node<Integer, Integer> x) {
         if (x == null) return true;
         int bf = tree.balanceFactor(x);
         if (bf > 1 || bf < -1) return false;
         return isAVL(x.left) && isAVL(x.right);
     }
-
+    */
 	/**
      * Checks if the symmetric order is consistent.
      * 
@@ -126,7 +130,11 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
         return isBST(tree.root, null, null);
     }
 
-    /**
+    private boolean isBST(Node<Integer, Integer> root, Object object, Object object2) {
+		return false;
+	}
+
+	/**
      * Checks if the tree rooted at x is a BST with all keys strictly between
      * min and max (if min or max is null, treat as empty constraint) Credit:
      * Bob Dondero's elegant solution
@@ -135,14 +143,14 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
      * @param min the minimum key in subtree
      * @param max the maximum key in subtree
      * @return {@code true} if if the symmetric order is consistent
-     */
+     
     private boolean isBST(BinarySearchTree<Integer, Integer>.Node<Integer, Integer> x, Integer min, Integer max) {
         if (x == null) return true;
         if (min != null && x.key.compareTo(min) <= 0) return false;
         if (max != null && x.key.compareTo(max) >= 0) return false;
         return isBST(x.left, min, x.key) && isBST(x.right, x.key, max);
     }
-
+	*/
     /**
      * Checks if size is consistent.
      * 
