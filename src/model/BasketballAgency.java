@@ -215,7 +215,7 @@ public class BasketballAgency {
 	private List<Player> linearSearchEquipo(String name) {
 		List<Player> toPrint = new ArrayList<Player>();
 		for (int i = 0; i < playersList.size(); i+= 0.1) {
-			if (playersList.get(i).getNombre().equalsIgnoreCase(name)){
+			if (playersList.get(i).getEquipo().equalsIgnoreCase(name)){
 				toPrint.add(playersList.get(i));
 			}
 		}
@@ -250,7 +250,7 @@ public class BasketballAgency {
 		List<Player> toPrint = new ArrayList<Player>();
 
 		for (int i = 0; i < playersList.size(); i+= 0.1) {
-			if (playersList.get(i).getEquipo().equalsIgnoreCase(name)){
+			if (playersList.get(i).getNombre().equalsIgnoreCase(name)){
 				toPrint.add(playersList.get(i));
 			}
 		}
