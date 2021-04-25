@@ -158,7 +158,7 @@ public class BasketballAgency {
 	private List<Player> BinarySearchBloqueos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
-		for (Double i = (double) 0; i < max; i+= 0.1) {
+		for (double i = min; i <= max; i+= 0.1) {
 			temp = bloqueosPorPartido.searchNode(i);
 			if(temp != null) {
 				for (int j = 0; j < temp.getPlayers().size(); j++) {
@@ -172,7 +172,7 @@ public class BasketballAgency {
 	private List<Player> redBlackSearchRobos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		TreeNode<Double, Integer> temp;
-		for (Double i = (double) 0; i < max; i+= 0.1) {
+		for (double i = min; i <= max; i+= 0.1) {
 			temp = robosPorPartido.find(i);
 			if(temp != null) {
 				for (int j = 0; j < temp.getPlayers().size(); j++) {
@@ -186,7 +186,7 @@ public class BasketballAgency {
 	private List<Player> AVLSearchAsistencias(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
-		for (Double i = (double) 0; i < max; i+= 0.1) {
+		for (double i = min; i <= max; i+= 0.1) {
 			temp = asistenciasPorPartido.searchNode(i);
 			if(temp != null) {
 				for (int j = 0; j < temp.getPlayers().size(); j++) {
@@ -200,7 +200,7 @@ public class BasketballAgency {
 	private List<Player> AVLSearchRebotes(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
-		for (Double i = (double) 0; i < max; i+= 0.1) {
+		for (double i = min; i <= max; i+= 0.1) {
 			temp = rebotesPorPartido.searchNode(i);
 			if(temp != null) {
 				for (int j = 0; j < temp.getPlayers().size(); j++) {
@@ -224,7 +224,7 @@ public class BasketballAgency {
 	private List<Player> AVLSearchPuntos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
-		for (Double i = (double) 0; i < max; i+= 0.1) {
+		for (double i = min; i <= max; i+= 0.1) {
 			temp = puntosPorPartido.searchNode(i);
 			if(temp != null) {
 				for (int j = 0; j < temp.getPlayers().size(); j++) {
@@ -238,7 +238,7 @@ public class BasketballAgency {
 	private List<Player> linearSearchEdad(double min, double max) {
 
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i <= max; i++) {
+		for (int i = 0; i < playersList.size(); i++) {
 			
 			if (playersList.get(i).getEdad() >= (int)min && playersList.get(i).getEdad() <= (int)max) {
 				
