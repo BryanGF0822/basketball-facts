@@ -199,7 +199,29 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	}
 
 
+	protected Node<K, V> rotateRight(Node<K, V> x) {
+		Node<K, V> y = x.left;
+		x.left = y.right;
+		y.right = x;
+		x.height = 1 + Math.max(height(x.left), height(x.right));
+		y.height = 1 + Math.max(height(y.left), height(y.right));
+		return y;
+	}
 
+	/**
+	 * Rotates the given subtree to the left.
+	 * 
+	 * @param x the subtree
+	 * @return the left rotated subtree
+	 */
+	protected Node<K, V> rotateLeft(Node<K, V> x) {
+		Node<K, V> y = x.right;
+		x.right = y.left;
+		y.left = x;
+		x.height = 1 + Math.max(height(x.left), height(x.right));
+		y.height = 1 + Math.max(height(y.left), height(y.right));
+		return y;
+	}
 
 
 	@Override

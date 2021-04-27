@@ -9,9 +9,7 @@ import model.Player;
 
 public class Node<K extends Comparable<? super K>, V> implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 3073345467094967068L;
 
 	/** Parent node */
