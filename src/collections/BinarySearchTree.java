@@ -19,20 +19,12 @@ import model.Player;
  * Implementation of a generic Binary Search Tree in which whenever are
  * duplicate keys, values are stored in a list.
  * 
- * @author Christian Gallo Pelaez
- * @author Sebastian Garcia Acosta
+ * 
  * @param <K,V>, any class that implements the Comparable interface
  */
 public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<List<V>>, Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3509254229421105483L;
-
 	
-	
-	
-		
+	private static final long serialVersionUID = 3509254229421105483L;		
 		
 	
 
@@ -49,65 +41,9 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		this.size = 0;
 	}
 
-	/**
-	 * @param root
-	 * @param space
-	 */
-	public void print2DUtil(Node<K, V> root, int space) {
-		int count = 5;
-		// Base case
-		if (root == null)
-			return;
-
-		// Increase distance between levels
-		space += count;
-
-		// Process right child first
-		print2DUtil(root.right, space);
-
-		// Print current node after space
-		// count
-		for (int i = count; i < space; i++)
-			System.out.print(" ");
-		System.out.print(root.values + "\n");
-
-		// Process left child
-		print2DUtil(root.left, space);
-	}
-
-	// Wrapper over print2DUtil()
-	public void print2D() {
-		// Pass initial space count as 0
-		print2DUtil(root, 0);
-	}
-
-	public String string2DUtil(Node<K, V> root, int space, String s) {
-		int count = 5;
-		// Base case
-		if (root == null)
-			return "";
-
-		// Increase distance between levels
-		space += count;
-
-		// Process right child first
-		print2DUtil(root.right, space);
-
-		// Print current node after space
-		// count
-		for (int i = count; i < space; i++)
-			s += " ";
-		s += root.values + "\n";
-
-		// Process left child
-		return string2DUtil(root.left, space, s);
-	}
-
-	// Wrapper over print2DUtil()
-	public String string2D() {
-		// Pass initial space count as 0
-		return string2DUtil(root, 0, "");
-	}
+	
+	
+	
 
 	/**
 	 * Searches an element in the tree
@@ -262,176 +198,25 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		return this.root.values;
 	}
 
-	public void reset() {
-		this.root = null;
-	}
 
-	public List<V> inorder() {
-		List<V> list = new ArrayList<V>();
-		inorder(root, list);
-		return list;
-	}
 
-	private void inorder(Node<K, V> root, List<V> list) {
-		if (root != null) {
-			inorder(root.left, list);
-			for (V value : root.values)
-				list.add(value);
-			inorder(root.right, list);
-		}
-	}
 
-	public List<V> preorder() {
-		List<V> list = new ArrayList<V>();
-		preorder(root, list);
-		return list;
-	}
-
-	private void preorder(Node<K, V> root, List<V> list) {
-		if (root != null) {
-			for (V value : root.values)
-				list.add(value);
-			preorder(root.left, list);
-			preorder(root.right, list);
-		}
-	}
-
-	public List<V> preorderLookUp(String key, int maxSize) {
-		List<V> list = new LinkedList<V>();
-		preorderLookUp(root, list, key.toString(), maxSize);
-		return list;
-	}
-
-	private void preorderLookUp(Node<K, V> root, List<V> list, String key, int maxSize) {
-
-		if (root != null) {
-
-			key = key.toUpperCase();
-
-			int keySize = key.length();
-			String currKey = root.key.toString().toUpperCase();
-			
-			String subCurrKey = currKey;
-			if(keySize <= currKey.length()) {
-				subCurrKey = currKey.substring(0, keySize).toUpperCase();
-			}
-			
-
-			if (list.size() >= maxSize) {
-				list = list.subList(0, maxSize);
-				return;
-			}
-
-			if (subCurrKey.equalsIgnoreCase(key)) {
-				list.addAll(root.values);
-			}
-
-			if ((int) key.compareTo(subCurrKey) <= 0) {
-				preorderLookUp(root.left, list, key, maxSize);
-			}
-
-			if ((int) key.compareTo(subCurrKey) >= 0) {
-				preorderLookUp(root.right, list, key, maxSize);
-			}
-
-		}
-	}
-
-	public List<V> postorder() {
-		List<V> list = new ArrayList<V>();
-		postorder(root, list);
-		return list;
-	}
-
-	private void postorder(Node<K, V> root, List<V> list) {
-		if (root != null) {
-			postorder(root.left, list);
-			postorder(root.right, list);
-			for (V value : root.values)
-				list.add(value);
-		}
-	}
-
-	/**
-	 * Rotates the given subtree to the right.
-	 * 
-	 * @param x the subtree
-	 * @return the right rotated subtree
-	 */
-	protected Node<K, V> rotateRight(Node<K, V> x) {
-		Node<K, V> y = x.left;
-		x.left = y.right;
-		y.right = x;
-		x.height = 1 + Math.max(height(x.left), height(x.right));
-		y.height = 1 + Math.max(height(y.left), height(y.right));
-		return y;
-	}
-
-	/**
-	 * Rotates the given subtree to the left.
-	 * 
-	 * @param x the subtree
-	 * @return the left rotated subtree
-	 */
-	protected Node<K, V> rotateLeft(Node<K, V> x) {
-		Node<K, V> y = x.right;
-		x.right = y.left;
-		y.left = x;
-		x.height = 1 + Math.max(height(x.left), height(x.right));
-		y.height = 1 + Math.max(height(y.left), height(y.right));
-		return y;
-	}
-
-	public Iterator<List<V>> iterator() {
-		return new InorderIterator();
-	}
-
-	/* Iterator */
-	private class InorderIterator implements Iterator<List<V>> {
-		/** The nodes that are still to be visited. */
-		private Stack<Node<K, V>> stack;
-
-		/** Construct. */
-		private InorderIterator() {
-			stack = new Stack<Node<K, V>>();
-			pushPathToMin(root);
-		}
-
-		/**
-		 * Push all the nodes in the path from a given node to the leftmost node in the
-		 * subtree.
-		 */
-		private void pushPathToMin(Node<K, V> localRoot) {
-			Node<K, V> current = localRoot;
-			while (current != null) {
-				stack.push(current);
-				current = current.left;
-			}
-		}
-
-		/** Is there another element in this iterator? */
-		public boolean hasNext() {
-			return !stack.isEmpty();
-		}
-
-		/**
-		 * The next element in this iterator; Advance the iterator.
-		 */
-		public List<V> next() {
-			Node<K, V> node = stack.peek();
-			stack.pop();
-			pushPathToMin(node.right);
-			return node.values;
-		}
-
-		/** (Don't) remove an element from this iterator. */
-		public void remove() {
-			throw new UnsupportedOperationException();
-		}
-	}
 
 	@Override
-	public String toString() {
-		return string2D();
+	public Iterator<List<V>> iterator() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
+
+	
+	
+
+	
+
+	
+			
+
+			
 }

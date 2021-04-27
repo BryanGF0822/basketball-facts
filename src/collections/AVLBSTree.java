@@ -5,9 +5,7 @@ import java.util.List;
 
 public class AVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<K, V> implements BalancedBSTree<K, V>, Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1005016605184816284L;
 
 	public AVLBSTree() {

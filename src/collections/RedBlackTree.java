@@ -4,13 +4,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
     public TreeNode<K, V> root;
 
     public void leftRotate(TreeNode<K, V> x) { // left rotate x
-        /*
-            x                         y
-          /  \                      /  \
-         a    y     -------->      x    c
-            /  \                 /  \
-           b    c               a    b
-        */
+        
         // y = x's right child
         TreeNode<K, V> y = x.right;
         // set x's right child to b
@@ -38,13 +32,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
 
     public void rightRotate(TreeNode<K, V> y) { // right rotate y
 
-        /*
-            x                         y
-          /  \                      /  \
-         a    y     <--------      x    c
-            /  \                 /  \
-           b    c               a    b
-        */
+      
         // x = y's left child
         TreeNode<K, V> x = y.left;
         // set y's left child to b
@@ -154,26 +142,7 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
         this.root.color = Color.BLACK;
     }
 
-    public TreeNode<K, V> higherEntry(K key){
-        TreeNode<K, V> x = this.find(key);
-        if(x == null) return null;
-        if(x.right != null){
-            // find the leftmost child of x.right
-            x = x.right;
-            while(x.left != null){
-                x = x.left;
-            }
-            return x;
-        }else{
-            // find find x's ancestor of which x is in the left portion
-            while(x.parent != null){
-                if(x.parent.left == x)return x;
-                x = x.parent;
-            }
-            return null;
-        }
-    }
-
+  
     public TreeNode<K, V> find(K key){
         TreeNode<K, V> x = this.root;
         while(x != null){
@@ -314,36 +283,5 @@ public class RedBlackTree<K extends Comparable<? super K>, V> {
         x.color = Color.BLACK;
     }
 
-
-
-
-    @Override
-    public String toString(){
-        // traverse tree in level order
-        LinkedList<TreeNode<K, V>> queue = new LinkedList<TreeNode<K, V>>();
-        StringBuilder sb = new StringBuilder();
-        queue.addLast(root);
-        while(!queue.isEmpty()){
-            int size = queue.size();
-            while(size != 0){
-                TreeNode<K, V> node = queue.removeFirst();
-                size--;
-                if(node == null){
-                    sb.append("#,");
-                }else{
-                    sb.append(node.key.toString());
-                    sb.append("(");
-                    sb.append(node.val.toString());
-                    sb.append(",");
-                    sb.append(node.color);
-                    sb.append(")");
-                    sb.append(",");
-                    queue.addLast(node.left);
-                    queue.addLast(node.right);
-                }
-            }
-        }
-        return sb.toString();
-    }
 }
 
