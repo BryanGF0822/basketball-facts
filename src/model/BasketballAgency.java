@@ -99,21 +99,21 @@ public class BasketballAgency {
             	 toPrint =linearSearchEdad(min, max);
                      break;
             case "puntos":
-            	 toPrint =AVLSearchPuntos(min, max);
+            	 toPrint = aVLSearchPuntos(min, max);
                      break;
 
             case "rebotes": 
-            	toPrint =AVLSearchRebotes(min, max);
+            	toPrint = aVLSearchRebotes(min, max);
                      break;
             case "asistencias":
-            	toPrint =AVLSearchAsistencias(min, max);            	
+            	toPrint = aVLSearchAsistencias(min, max);            	
                      break;
             case "robos": 
             	toPrint =redBlackSearchRobos(min, max);
             	
                      break;
             case "bloqueos":
-            	toPrint =BinarySearchBloqueos(min, max);
+            	toPrint = binarySearchBloqueos(min, max);
             break;
             case "faltas": 
             	toPrint =linearSearchFaltas(min, max);
@@ -142,7 +142,7 @@ public class BasketballAgency {
 	}
 
 
-	private List<Player> linearSearchFaltas(double min, double max) {
+	public List<Player> linearSearchFaltas(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		for (int i = 0; i < playersList.size(); i+= 0.1) {
 			
@@ -153,7 +153,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> BinarySearchBloqueos(double min, double max) {
+	public List<Player> binarySearchBloqueos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
 		for (double i = min; i <= max; i+= 0.1) {
@@ -167,7 +167,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> redBlackSearchRobos(double min, double max) {
+	public List<Player> redBlackSearchRobos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		TreeNode<Double, Integer> temp;
 		for (double i = min; i <= max; i+= 0.1) {
@@ -181,7 +181,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> AVLSearchAsistencias(double min, double max) {
+	public List<Player> aVLSearchAsistencias(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
 		for (double i = min; i <= max; i+= 0.1) {
@@ -195,7 +195,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> AVLSearchRebotes(double min, double max) {
+	public List<Player> aVLSearchRebotes(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
 		for (double i = min; i <= max; i+= 0.1) {
@@ -219,7 +219,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> AVLSearchPuntos(double min, double max) {
+	public List<Player> aVLSearchPuntos(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
 		Node<Double, Integer> temp;
 		for (double i = min; i <= max; i+= 0.1) {
@@ -233,7 +233,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> linearSearchEdad(double min, double max) {
+	public List<Player> linearSearchEdad(double min, double max) {
 
 		List<Player> toPrint = new ArrayList<Player>();
 		for (int i = 0; i < playersList.size(); i++) {
@@ -246,7 +246,7 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	private List<Player> linearSearchNombre(String name) {
+	public List<Player> linearSearchNombre(String name) {
 
 		List<Player> toPrint = new ArrayList<Player>();
 

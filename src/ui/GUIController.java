@@ -1,6 +1,11 @@
 package ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -50,6 +57,33 @@ public class GUIController {
 	// ********** Window informacinJugadores **********
 	@FXML
 	private TableView<Player> playersTable;
+	
+	@FXML
+	private TableColumn<Player, String> columnName;
+
+	@FXML
+	private TableColumn<Player, Integer> columnAge;
+
+	@FXML
+	private TableColumn<Player, String> columnTeam;
+
+	@FXML
+	private TableColumn<Player, Double> columnScore;
+
+	@FXML
+	private TableColumn<Player, Double> columnRebounds;
+
+	@FXML
+	private TableColumn<Player, Double> columnAssists;
+    
+	@FXML
+	private TableColumn<Player, Double> columnSteals;
+	
+	@FXML
+	private TableColumn<Player, Double> columnBlocks;
+	
+	@FXML
+	private TableColumn<Player, Double> columnFouls;
     
     // ********** model atributes **********
 	private static BasketballAgency ba ;
@@ -75,10 +109,13 @@ public class GUIController {
 	
 	// ********** controller atributes **********
 	private boolean isSearching;
+	private List<Player> filteredPlayers;
 	
 	public GUIController() {
 		ba = new BasketballAgency();
 		isSearching = false;
+		filteredPlayers = new ArrayList<>();
+		
 	}
 	
 	// ********** load fxml **********
@@ -112,7 +149,8 @@ public class GUIController {
 			stage.setTitle("Basketball Facts!");
 			stage.setResizable(false);
 			stage.show();
-
+			loadPlayersTable(filteredPlayers);
+			
 		} catch (IOException ioException) {
 			// TODO: handle exception with an alert that displays the content of the error.
 		}
@@ -303,6 +341,11 @@ public class GUIController {
         		throw new InvalidNameException(filterByNameLabel.getText());
     		}
         	
+        	filteredPlayers = ba.linearSearchNombre(name);
+        	if (filteredPlayers.size() == 0) {
+				throw new playersNotFoundException();
+			}
+        	
         	Stage stage = (Stage) nameToSearch.getScene().getWindow();
             stage.close();
             
@@ -315,6 +358,8 @@ public class GUIController {
     		
 		} catch (InvalidNameException iNE) {
 			invalidNameAlert(iNE.getMessage());
+		}catch (playersNotFoundException pNFE) {
+			playersNotFoundAlert(pNFE.getMessage());
 		}
     	
     }
@@ -353,17 +398,32 @@ public class GUIController {
 		} catch (NumberFormatException nFE) {
 			invalidRangeAlert("Invalid number format, Check that the entered data is a number.");
 			
+		} catch (playersNotFoundException pNFE) {
+			playersNotFoundAlert(pNFE.getMessage());
+			
 		}
 		
     }
     
-    private void validateRange(double min, double max, String name) throws InvalidRangeException{
+    private void validateRange(double min, double max, String name) throws InvalidRangeException, playersNotFoundException{
    
     	if (name.equals("Asistencias") || name.equals("Puntos")) {
 			if (SCORE_ASSISTANCE_RANGE_MIN > min || SCORE_ASSISTANCE_RANGE_MAX < max) {
 				throw new InvalidRangeException(SCORE_ASSISTANCE_RANGE_MIN, SCORE_ASSISTANCE_RANGE_MAX, name);
 			}else {
+				if (name.equals("Asistencias")) {
+					filteredPlayers = ba.aVLSearchAsistencias(min, max);
+		
+				}else {
+					filteredPlayers = ba.aVLSearchPuntos(min, max);
+					
+				}
+				
+				if (filteredPlayers.size() == 0) {
+					throw new playersNotFoundException();
+				}
 				return;
+				
 			}
 		}
     	
@@ -371,6 +431,16 @@ public class GUIController {
 			if (BLOCKS_STEALS_RANGE_MIN > min || BLOCKS_STEALS_RANGE_MAX < max) {
 				throw new InvalidRangeException(BLOCKS_STEALS_RANGE_MIN, BLOCKS_STEALS_RANGE_MAX, name);
 			}else {
+				if (name.equals("Robos")) {
+					filteredPlayers = ba.redBlackSearchRobos(min, max);
+				}else {
+					filteredPlayers = ba.binarySearchBloqueos(min, max);
+				}
+				
+				if (filteredPlayers.size() == 0) {
+					throw new playersNotFoundException();
+				}
+				
 				return;
 			}
 		}
@@ -379,6 +449,10 @@ public class GUIController {
 			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < max) {
 				throw new InvalidRangeException(AGE_RANGE_MIN, AGE_RANGE_MAX, name);
 			}else {
+				filteredPlayers = ba.linearSearchEdad(min, max);
+				if (filteredPlayers.size() == 0) {
+					throw new playersNotFoundException();
+				}
 				return;
 			}
 		}
@@ -388,6 +462,10 @@ public class GUIController {
 			if (REBOUNDS_RANGE_MIN > min || REBOUNDS_RANGE_MAX < max) {
 				throw new InvalidRangeException(REBOUNDS_RANGE_MIN, REBOUNDS_RANGE_MAX, name);
 			}else {
+				filteredPlayers = ba.aVLSearchRebotes(min, max);
+				if (filteredPlayers.size() == 0) {
+					throw new playersNotFoundException();
+				}
 				return;
 			}
 		}
@@ -396,6 +474,10 @@ public class GUIController {
 			if (FOULS_RANGE_MIN > min || FOULS_RANGE_MAX < max) {
 				throw new InvalidRangeException(FOULS_RANGE_MIN, FOULS_RANGE_MAX, name);
 			}else {
+				filteredPlayers = ba.linearSearchFaltas(min, max);
+				if (filteredPlayers.size() == 0) {
+					throw new playersNotFoundException();
+				}
 				return;
 			}
 		}
@@ -411,6 +493,22 @@ public class GUIController {
 		error.showAndWait();
     }
     
+    private void playersNotFoundAlert(String message) {
+    	Alert error = new Alert(AlertType.ERROR);
+		error.setTitle("Error");
+		error.setHeaderText("Ningun jugador encontrado.");
+		error.setContentText(message);
+		if (filterByNameLabel.getScene().getWindow().isShowing()) {
+			error.initOwner(filterByNameLabel.getScene().getWindow());
+			
+		}else {
+			error.initOwner(filterByRangeLabel.getScene().getWindow());
+			
+		}
+		
+		error.showAndWait();
+    }
+    
 	// ********** Back to window Initial **********
 	@FXML
 	void backWindowInicio(ActionEvent event) {
@@ -420,6 +518,23 @@ public class GUIController {
 		
 	}
 	
+	
+	private void loadPlayersTable(List<Player> playersList) {
+		System.out.println("size: " + playersList.size());
+		ObservableList<Player> observableList;
+		observableList = FXCollections.observableArrayList(playersList);
+		playersTable.setItems(observableList);
+
+		columnName.setCellValueFactory(new PropertyValueFactory<Player, String>("nombre"));
+		columnTeam.setCellValueFactory(new PropertyValueFactory<Player, String>("equipo"));
+		columnAge.setCellValueFactory(new PropertyValueFactory<Player, Integer>("edad"));
+		columnAssists.setCellValueFactory(new PropertyValueFactory<Player, Double>("asistenciasPorPartido"));
+		columnBlocks.setCellValueFactory(new PropertyValueFactory<Player, Double>("bloqueosPorPartido"));
+		columnFouls.setCellValueFactory(new PropertyValueFactory<Player, Double>("faltasPorPartido"));
+		columnRebounds.setCellValueFactory(new PropertyValueFactory<Player, Double>("rebotesPorPartido"));
+		columnScore.setCellValueFactory(new PropertyValueFactory<Player, Double>("puntosPorPartido"));
+		columnSteals.setCellValueFactory(new PropertyValueFactory<Player, Double>("robosPorPartido"));
+	}
 	
 }
 
