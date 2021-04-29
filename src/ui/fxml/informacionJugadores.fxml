@@ -44,7 +44,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
                      <children>
-                        <TableView prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
+                        <TableView fx:id="playersTable" prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
                           <columns>
                             <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Nombre" />
                               <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Edad" />
@@ -64,7 +64,7 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#backWindowInicio" style="-fx-background-color: blac;" text="Inicio" textFill="#d3d3d3" underline="true">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#backWindowInicio" style="-fx-background-color: black;" text="Inicio" textFill="#d3d3d3" underline="true">
                <font>
                   <Font name="Roboto" size="14.0" />
                </font>

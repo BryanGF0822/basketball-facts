@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.BasketballAgency;
+import model.Player;
 import customExceptions.*;
 
 public class GUIController {
@@ -43,6 +45,11 @@ public class GUIController {
 	// ********** Id Window consultarJugadores **********
 	@FXML
 	private HBox windowCosultarJugadores;
+	
+	
+	// ********** Window informacinJugadores **********
+	@FXML
+	private TableView<Player> playersTable;
     
     // ********** model atributes **********
 	private static BasketballAgency ba ;
@@ -89,6 +96,7 @@ public class GUIController {
 			stage.show();
 
 		} catch (IOException ioException) {
+			ioException.printStackTrace();
 			// TODO: handle exception with an alert that displays the content of the error.
 		} 
 	}
@@ -298,6 +306,11 @@ public class GUIController {
         	Stage stage = (Stage) nameToSearch.getScene().getWindow();
             stage.close();
             
+            stage = (Stage) windowCosultarJugadores.getScene().getWindow();
+            stage.close();
+            
+            isSearching = false;
+            
     		LoadInfoWindow();
     		
 		} catch (InvalidNameException iNE) {
@@ -311,6 +324,7 @@ public class GUIController {
 		error.setTitle("Error");
 		error.setHeaderText("Invalid Name to Search");
 		error.setContentText(message);
+		error.initOwner(nameToSearch.getScene().getWindow());
 		error.showAndWait();
     }
     
@@ -325,7 +339,12 @@ public class GUIController {
     		
     		Stage stage = (Stage) filterByRangeLabel.getScene().getWindow();
             stage.close();
+            
+            stage = (Stage) windowCosultarJugadores.getScene().getWindow();
+            stage.close();
     		
+            isSearching = false;
+            
     		LoadInfoWindow();
     		
 		} catch (InvalidRangeException iRE) {
@@ -395,10 +414,10 @@ public class GUIController {
 	// ********** Back to window Initial **********
 	@FXML
 	void backWindowInicio(ActionEvent event) {
-
-		LoadMainWindow();
-		Stage stage = (Stage) windowCosultarJugadores.getScene().getWindow();
+		Stage stage = (Stage) playersTable.getScene().getWindow();
 		stage.close();
+		LoadMainWindow();
+		
 	}
 	
 	
