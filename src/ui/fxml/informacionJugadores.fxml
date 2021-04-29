@@ -46,15 +46,15 @@
                      <children>
                         <TableView fx:id="playersTable" prefHeight="144.0" prefWidth="594.0" style="-fx-background-color: Black;">
                           <columns>
-                            <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Nombre" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Edad" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Equipo" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Puntos" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Rebotes" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Asistencias" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Robos" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Bloqueos" />
-                              <TableColumn prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Faltas" />
+                            <TableColumn fx:id="columnName" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Nombre" />
+                              <TableColumn fx:id="columnAge" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Edad" />
+                              <TableColumn fx:id="columnTeam" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Equipo" />
+                              <TableColumn fx:id="columnScore" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Puntos" />
+                              <TableColumn fx:id="columnRebounds" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Rebotes" />
+                              <TableColumn fx:id="columnAssists" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Asistencias" />
+                              <TableColumn fx:id="columnSteals" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Robos" />
+                              <TableColumn fx:id="columnBlocks" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Bloqueos" />
+                              <TableColumn fx:id="columnFouls" prefWidth="-1.0" style="-fx-background-color: grey; -fx-border-color: black;" text="Faltas" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
