@@ -359,7 +359,7 @@ public class GUIController {
 		} catch (InvalidNameException iNE) {
 			invalidNameAlert(iNE.getMessage());
 		}catch (playersNotFoundException pNFE) {
-			playersNotFoundAlert(pNFE.getMessage());
+			playersNotFoundAlert(pNFE.getMessage(),"name");
 		}
     	
     }
@@ -399,7 +399,7 @@ public class GUIController {
 			invalidRangeAlert("Invalid number format, Check that the entered data is a number.");
 			
 		} catch (playersNotFoundException pNFE) {
-			playersNotFoundAlert(pNFE.getMessage());
+			playersNotFoundAlert(pNFE.getMessage(),"range");
 			
 		}
 		
@@ -493,19 +493,20 @@ public class GUIController {
 		error.showAndWait();
     }
     
-    private void playersNotFoundAlert(String message) {
+    private void playersNotFoundAlert(String message, String nameOrRange) {
     	Alert error = new Alert(AlertType.ERROR);
 		error.setTitle("Error");
 		error.setHeaderText("Ningun jugador encontrado.");
 		error.setContentText(message);
-		if (filterByNameLabel.getScene().getWindow().isShowing()) {
+		
+		if (nameOrRange.equals("name")) {
 			error.initOwner(filterByNameLabel.getScene().getWindow());
 			
 		}else {
 			error.initOwner(filterByRangeLabel.getScene().getWindow());
 			
 		}
-		
+
 		error.showAndWait();
     }
     
@@ -520,7 +521,6 @@ public class GUIController {
 	
 	
 	private void loadPlayersTable(List<Player> playersList) {
-		System.out.println("size: " + playersList.size());
 		ObservableList<Player> observableList;
 		observableList = FXCollections.observableArrayList(playersList);
 		playersTable.setItems(observableList);
