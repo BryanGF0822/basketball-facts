@@ -32,6 +32,8 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	protected Node<K, V> root;
 
 	protected int size;
+	
+	private List<K> keys;
 
 	/**
 	 * Constructor
@@ -39,10 +41,13 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 	public BinarySearchTree() {
 		this.root = null;
 		this.size = 0;
+		keys = new ArrayList<K>();
 	}
 
 	
-	
+	public List<K> getKeys(){
+		return keys;
+	}
 	
 
 	/**
@@ -95,7 +100,9 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		else {
 			toAdd = add(root, key, value);
 			size++;
+			
 		}
+		keys.add(key);
 		return toAdd;
 	}
 
@@ -118,6 +125,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 		if (key == null)
 			throw new IllegalArgumentException("Null key to delete");
 		root = delete(root, key);
+		keys.remove(key);
 	}
 
 	protected Node<K, V> delete(Node<K, V> node, K key) {
@@ -139,6 +147,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Li
 			}
 			size--;
 		}
+	
 		return node;
 	}
 

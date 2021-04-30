@@ -76,7 +76,7 @@ public class BasketballAgency {
 			    
 			    toAdd = bloqueosPorPartido.add(playersList.get(i).getPuntosPorPartido(), i); 
 			    toAdd.getPlayers().add(playersList.get(i));
-			    System.out.println(toAdd);
+			   System.out.println(bloqueosPorPartido.searchNode(toAdd.getPlayers().get(0).getBloqueosPorPartido()));
 			}else {
 				bloqueosPorPartido.searchNode(playersList.get(i).getPuntosPorPartido()).getPlayers().add(playersList.get(i));
 			}
@@ -144,7 +144,7 @@ public class BasketballAgency {
 
 	public List<Player> linearSearchFaltas(double min, double max) {
 		List<Player> toPrint = new ArrayList<Player>();
-		for (int i = 0; i < playersList.size(); i+= 0.1) {
+		for (int i = 0; i < playersList.size(); i++) {
 			
 			if (playersList.get(i).getFaltasPorPartido() >= min && playersList.get(i).getFaltasPorPartido() <= max) {
 				toPrint.add(playersList.get(i));
@@ -153,14 +153,36 @@ public class BasketballAgency {
 		return toPrint;
 	}
 
-	public List<Player> binarySearchBloqueos(double min, double max) {
+	public List<Player> binarySearchBloqueos(Double min, Double max) {
 		List<Player> toPrint = new ArrayList<Player>();
+		/*
+		 * for (int i = 0; i < max; i+=1) {
+			
 		Node<Double, Integer> temp;
-		for (double i = min; i <= max; i+= 0.1) {
-			temp = bloqueosPorPartido.searchNode(i);
+		for (Double j = (double) 0; j < max; j+= 0.1) {
+			temp = bloqueosPorPartido.searchNode(j);
 			if(temp != null) {
-				for (int j = 0; j < temp.getPlayers().size(); j++) {
-					toPrint.add(temp.getPlayers().get(j));
+				for (int k = 0; k < temp.getPlayers().size(); k++) {
+					toPrint.add(temp.getPlayers().get(k));
+				}
+			}
+		}
+		
+	}
+		 */
+		
+		List<Double> validKeys = new ArrayList<>();
+		for (Double double1 : bloqueosPorPartido.getKeys()) {
+			if(double1 <= max && double1 >= min) {
+				validKeys.add(double1);
+			}
+			
+		}
+		
+		for (Double double2 : validKeys) {
+			if(bloqueosPorPartido.searchNode(double2) != null) {
+				for (Player p: bloqueosPorPartido.searchNode(double2).getPlayers()) {
+					toPrint.add(p);
 				}
 			}
 		}
