@@ -383,7 +383,7 @@ public class GUIController {
     private void validateRange(double min, double max, String name) throws InvalidRangeException, playersNotFoundException{
    
     	if (name.equals("Asistencias") || name.equals("Puntos")) {
-			if (SCORE_ASSISTANCE_RANGE_MIN > min || SCORE_ASSISTANCE_RANGE_MAX < max) {
+			if (SCORE_ASSISTANCE_RANGE_MIN > min || SCORE_ASSISTANCE_RANGE_MAX < min || SCORE_ASSISTANCE_RANGE_MAX < max || SCORE_ASSISTANCE_RANGE_MIN > max) {
 				throw new InvalidRangeException(SCORE_ASSISTANCE_RANGE_MIN, SCORE_ASSISTANCE_RANGE_MAX, name);
 			}else {
 				if (name.equals("Asistencias")) {
@@ -403,7 +403,7 @@ public class GUIController {
 		}
     	
     	if (name.equals("Robos") || name.equals("Bloqueos")) {
-			if (BLOCKS_STEALS_RANGE_MIN > min || BLOCKS_STEALS_RANGE_MAX < max) {
+			if (BLOCKS_STEALS_RANGE_MIN > min || BLOCKS_STEALS_RANGE_MAX < min || BLOCKS_STEALS_RANGE_MAX < max || BLOCKS_STEALS_RANGE_MIN > max) {
 				throw new InvalidRangeException(BLOCKS_STEALS_RANGE_MIN, BLOCKS_STEALS_RANGE_MAX, name);
 			}else {
 				if (name.equals("Robos")) {
@@ -421,7 +421,7 @@ public class GUIController {
 		}
     	
     	if (name.equals("Edad")) {
-			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < max) {
+			if (AGE_RANGE_MIN > min || AGE_RANGE_MAX < min || AGE_RANGE_MAX < max || AGE_RANGE_MIN > max) {
 				throw new InvalidRangeException(AGE_RANGE_MIN, AGE_RANGE_MAX, name);
 			}else {
 				filteredPlayers = ba.linearSearchEdad(min, max);
@@ -434,7 +434,7 @@ public class GUIController {
     	
     	
     	if (name.equals("Rebotes")) {
-			if (REBOUNDS_RANGE_MIN > min || REBOUNDS_RANGE_MAX < max) {
+			if (REBOUNDS_RANGE_MIN > min || REBOUNDS_RANGE_MAX < min || REBOUNDS_RANGE_MAX < max || REBOUNDS_RANGE_MIN > max) {
 				throw new InvalidRangeException(REBOUNDS_RANGE_MIN, REBOUNDS_RANGE_MAX, name);
 			}else {
 				filteredPlayers = ba.aVLSearchRebotes(min, max);
@@ -446,7 +446,7 @@ public class GUIController {
 		}
     	
     	if (name.equals("Faltas")) {
-			if (FOULS_RANGE_MIN > min || FOULS_RANGE_MAX < max) {
+			if (FOULS_RANGE_MIN > min || FOULS_RANGE_MAX < min || FOULS_RANGE_MAX < max || FOULS_RANGE_MIN > max) {
 				throw new InvalidRangeException(FOULS_RANGE_MIN, FOULS_RANGE_MAX, name);
 			}else {
 				filteredPlayers = ba.linearSearchFaltas(min, max);
