@@ -1,6 +1,7 @@
 package ui;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import model.BasketballAgency;
 import model.Player;
 import customExceptions.*;
@@ -133,8 +135,8 @@ public class GUIController {
 			stage.show();
 
 		} catch (IOException ioException) {
-			ioException.printStackTrace();
-			// TODO: handle exception with an alert that displays the content of the error.
+			unespectedErrorAlert(ioException.getStackTrace().toString(),(Stage) windowCosultarJugadores.getScene().getWindow() );
+			
 		} 
 	}
 // Ventana Informacion jugadores
@@ -152,7 +154,7 @@ public class GUIController {
 			loadPlayersTable(filteredPlayers);
 			
 		} catch (IOException ioException) {
-			// TODO: handle exception with an alert that displays the content of the error.
+			unespectedErrorAlert(ioException.getStackTrace().toString(),(Stage) playersTable.getScene().getWindow() );
 		}
 	}
 	
@@ -177,7 +179,7 @@ public class GUIController {
 			
 			
 		} catch (IOException ioException) {
-			// TODO: handle exception with an alert that displays the content of the error.
+			unespectedErrorAlert(ioException.getStackTrace().toString(),(Stage) filterByNameLabel.getScene().getWindow() );
 		} 
 		
 	}
@@ -202,7 +204,7 @@ public class GUIController {
 			
 			
 		} catch (IOException ioException) {
-			// TODO: handle exception with an alert that displays the content of the error.
+			unespectedErrorAlert(ioException.getStackTrace().toString(),(Stage) filterByRangeLabel.getScene().getWindow() );
 		} 
 		
 	}
@@ -221,7 +223,7 @@ public class GUIController {
 			LoadMainWindow();
 			    
 		} catch (IOException ioException) {
-				// TODO: handle exception with an alert that displays the content of the error.
+				unespectedErrorAlert(ioException.getStackTrace().toString(),(Stage) logoAP.getScene().getWindow() );
 		}
 		
 		
@@ -237,10 +239,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Edad");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -248,10 +247,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Asistencias");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -259,10 +255,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Bloqueos");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -270,10 +263,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Faltas");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -281,10 +271,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByNameWindow("Nombre del jugador");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -292,10 +279,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Rebotes");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -303,10 +287,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Puntos");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -314,10 +295,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByRangeWindow("Robos");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 
     @FXML
@@ -325,10 +303,7 @@ public class GUIController {
     	if (!isSearching) {
     		LoadSearchByNameWindow("Nombre del Equipo");
     		
-		}else {
-			//TODO
 		}
-    	
     }
 	
 	// ********** search name window action **********
@@ -536,5 +511,15 @@ public class GUIController {
 		columnSteals.setCellValueFactory(new PropertyValueFactory<Player, Double>("robosPorPartido"));
 	}
 	
+	
+	private void unespectedErrorAlert(String message, Window window) {
+		Alert error = new Alert(AlertType.ERROR);
+		error.setTitle("Error");
+		error.setHeaderText("Un error inesperado ha ocurrido.");
+		error.setContentText(message);
+		error.initOwner(window);
+		error.showAndWait();
+		
+	}
 }
 
