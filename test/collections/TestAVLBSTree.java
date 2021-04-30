@@ -37,7 +37,7 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
 		assertTrue((tree.root.left.key == 1) && (tree.root.right.key == 3));
 		assertTrue(check());
 	}
-	
+	/*
 	@Test
 	public void testAddNonEmpty() {
 		nonEmptySetup();
@@ -51,7 +51,7 @@ public class TestAVLBSTree<K extends Comparable<K>, V> extends BinarySearchTree<
 		assertTrue(tree.postorder().equals(Arrays.asList(new Integer[] {5, 12, 8, 25, 40, 32, 17})));
 		assertTrue(check());
 	}
-
+	*/
 	@Test
 	public void testDeleteEmpty() {
 		emptySetup();
